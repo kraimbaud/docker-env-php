@@ -1,13 +1,8 @@
-# Symfony
-#
-# VERSION 1.0.0
-
+# PHP
 FROM php:7-apache
 MAINTAINER Kevin Raimbaud <kraim@free.fr>
 
 LABEL Description = "This image is used to start Symfony3 project"
-
-ENV DIRPATH /var/www/html
 
 # apt-get command
 RUN apt-get update && apt-get install -y \
