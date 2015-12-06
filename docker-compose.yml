@@ -1,7 +1,7 @@
 app:
   build: .
-  container_name: symfony
+  container_name: php
   ports:
       - "80:80"
   volumes:
-     - .:/var/www/html
+     - ./app:/var/www/html

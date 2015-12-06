@@ -1,2 +1,3 @@
 app/*
 !app/.gitkeep
+!app/index.php
