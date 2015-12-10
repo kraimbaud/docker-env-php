@@ -1,6 +1,6 @@
-app:
-  build: .
-  container_name: php
+php-symfony:
+  build: ./docker/php-symfony
+  container_name: symfony
   ports:
       - "80:80"
   volumes:
