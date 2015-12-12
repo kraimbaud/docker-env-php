@@ -2,10 +2,12 @@
 
 A Docker Image to bootstrap Symfony project.
 
-## Install
+## Install the environment
 [Install Docker](http://docs.docker.com/engine/installation/), and run the following command to start your containers:
 
-    $ docker-compose up -d
+For Mac and Linux
+
+    $ bash up
 
 ## Log in the container
 
