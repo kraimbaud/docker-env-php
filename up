@@ -7,11 +7,13 @@ build="yes"
 # Check Argument
 if [ "$remove" = "rm" ]; then
     echo "Deleting every containers"
-    docker rm -f $(docker ps -a)
+    docker rm -f $(docker ps -a -q)
+
 elif [ "$remove" = "rmi" ]; then
     echo "Deleting every containers and images"
-    docker rm -f $(docker ps -a)
-    docker rmi -f $(docker images)
+    docker rm -f $(docker ps -a -q)
+    docker rmi -f $(docker images -q)
+
 elif [ "$remove" = "" ]; then
     build="yes"
 else
@@ -23,4 +25,6 @@ fi
 if [ "$build" = "yes" ]; then
     # Build and Start Docker containers
     docker-compose up -d
+    # Go in the container
+    docker exec -ti nginx bash
 fi
