@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# $0 is the script name, $1 id the first ARG, $2 is second...
+remove="$1"
+build="no"
+
+# Check Argument
+if [ "$remove" = "rm" ]; then
+    echo "Deleting every containers"
+    docker rm -f $(docker ps -a)
+elif [ "$remove" = "rmi" ]; then
+    echo "Deleting every containers and images"
+    docker rm -f $(docker ps -a)
+    docker rmi -f $(docker images)
+elif [ "$remove" = "" ]; then
+    build="yes"
+else
+    echo "Argument '$remove' not valid"
+    exit
+fi
+
+# Build Process
+if [ "$build" = "yes" ]; then
+    # Build Docker Images
+    docker build -t nginx-ship ./docker/nginx/
+    docker build -t symfony-ship ./docker/php/
+    # Start Docker containers
+    docker-compose up -d
+fi
