@@ -2,7 +2,7 @@
 
 # $0 is the script name, $1 id the first ARG, $2 is second...
 remove="$1"
-build="no"
+build="yes"
 
 # Check Argument
 if [ "$remove" = "rm" ]; then
@@ -21,9 +21,6 @@ fi
 
 # Build Process
 if [ "$build" = "yes" ]; then
-    # Build Docker Images
-    docker build -t nginx-ship ./docker/nginx/
-    docker build -t symfony-ship ./docker/php/
-    # Start Docker containers
+    # Build and Start Docker containers
     docker-compose up -d
 fi
