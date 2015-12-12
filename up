@@ -1,4 +1,18 @@
 #!/usr/bin/env bash
+normal="\\033[0;39m"
+blue="\\033[1;34m"
+red="\\033[1;31m"
+yellow="\\033[1;33m"
+green="\\033[1;32m"
+
+echo -e "$blue";
+echo "  ____                   __                     ____  _     _       ";
+echo " / ___| _   _ _ __ ___  / _| ___  _ __  _   _  / ___|| |__ (_)_ __  ";
+echo " \___ \| | | | '_ \` _ \| |_ / _ \| '_ \| | | | \___ \| '_ \| | '_ \ ";
+echo "  ___) | |_| | | | | | |  _| (_) | | | | |_| |  ___) | | | | | |_) |";
+echo " |____/ \__, |_| |_| |_|_|  \___/|_| |_|\__, | |____/|_| |_|_| .__/ ";
+echo "        |___/                           |___/                |_|    ";
+echo -e "$normal";
 
 # $0 is the script name, $1 id the first ARG, $2 is second...
 remove="$1"
@@ -6,18 +20,18 @@ build="yes"
 
 # Check Argument
 if [ "$remove" = "rm" ]; then
-    echo "Deleting every containers"
+    echo -e "$yellow" "Deleting every containers" "$normal"
     docker rm -f $(docker ps -a -q)
 
 elif [ "$remove" = "rmi" ]; then
-    echo "Deleting every containers and images"
+    echo -e "$yellow" "Deleting every containers and images" "$normal"
     docker rm -f $(docker ps -a -q)
     docker rmi -f $(docker images -q)
 
 elif [ "$remove" = "" ]; then
     build="yes"
 else
-    echo "Argument '$remove' not valid"
+    echo -e "$red" "Argument '$remove' not valid" "$normal"
     exit
 fi
 
@@ -26,5 +40,6 @@ if [ "$build" = "yes" ]; then
     # Build and Start Docker containers
     docker-compose up -d
     # Go in the container
+    echo -e "$green" "Log in PHP container..." "$normal"
     docker exec -ti nginx bash
 fi
