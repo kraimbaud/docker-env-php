@@ -4,10 +4,10 @@ php:
     links:
         - db
     ports:
-        - 9000:9000
-    working_dir: /www
+        - 80:80
+    working_dir: /var/www/html
     volumes:
-        - ./app:/www
+        - ./app:/var/www/html
 
 #nginx:
 #    build: ./docker/nginx
