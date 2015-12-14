@@ -41,5 +41,5 @@ if [ "$build" = "yes" ]; then
     docker-compose up -d
     # Go in the container
     echo -e "$green" "Log in PHP container..." "$normal"
-    docker exec -ti nginx bash
+    docker exec -ti symfony bash
 fi

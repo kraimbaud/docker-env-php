@@ -1,33 +1,36 @@
 php:
     build: ./docker/php
     container_name: symfony
-#    links:
-#        - mysql
+    links:
+        - db
     ports:
         - 9000:9000
+    working_dir: /www
     volumes:
         - ./app:/www
 
-nginx:
-    build: ./docker/nginx
-    container_name: nginx
-    links:
-        - php
-    ports:
-        - 80:80
-        - 443:443
-    volumes:
-        - ./docker/nginx/default.conf/:/etc/nginx/conf.d/default.conf
-    volumes_from:
-        - php
-
-#mysql:
-#    build: ./docker/mysql
-#    container_name: mysql
+#nginx:
+#    build: ./docker/nginx
+#    container_name: nginx
+#    links:
+#        - php
 #    ports:
-#        - 3306:3306
-#    environment:
-#        MYSQL_USER: root
-##        MYSQL_PASSWORD: root
-#        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-#        MYSQL_DATABASE: symfony
+#        - 80:80
+#        - 443:443
+#    working_dir: /www
+#    volumes:
+#        - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+#        - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+#    volumes_from:
+#        - php
+
+db:
+    image: mysql
+    container_name: mysql
+    ports:
+        - 3306:3306
+    environment:
+        MYSQL_USER: root
+#        MYSQL_PASSWORD: root
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        MYSQL_DATABASE: symfony
