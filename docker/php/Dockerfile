@@ -15,8 +15,8 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 RUN chmod a+x /usr/local/bin/symfony
 
-ADD symfony.ini /etc/php5/fpm/conf.d/
-ADD symfony.ini /etc/php5/cli/conf.d/
+ADD php.ini /etc/php5/fpm/conf.d/
+ADD php.ini /etc/php5/cli/conf.d/
 
 ADD symfony.pool.conf /etc/php5/fpm/pool.d/
 
