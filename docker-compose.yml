@@ -21,7 +21,7 @@ php:
         - ./app:/var/www/html
 
 nginx:
-    build: ./docker/nginx
+    image: nginx
     container_name: nginx
     links:
         - php

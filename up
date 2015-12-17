@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
+folderName=${PWD##*/}
 container="symfony"
 
-docker-compose build
 docker rm -f "$container"
+docker rmi -f "$folderName"_"$container"
 docker-compose up -d
 docker exec -ti "$container" bash
