@@ -1,17 +1,10 @@
-# Docker Symfony Ship
+Docker Symfony Ship
+=====================
 
-A Docker Image to bootstrap Symfony project.
+A Docker Image to bootstrap Symfony project. You will have to [Install Docker](http://docs.docker.com/engine/installation/)
 
-## Install the environment
-[Install Docker](http://docs.docker.com/engine/installation/), and run the following command to start your containers:
+### Install and Run the environment
 
-For Mac and Linux
+    docker-compose up -d
 
-    $ bash up
-
-## Log in the container
-
-Log in to the symfony container by running the following command:
-
-    $ docker exec -it symfony bash
 
