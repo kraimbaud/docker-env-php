@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
-folderName=${PWD##*/}
-container="symfony"
+project="symfony"
 
-docker rm -f "$container"
-docker rmi -f "$folderName"_"$container"
+docker rm -f "$project"
+docker rm -f mysql
+docker rm -f nginx
+
+docker rmi -f dockersymfony_php
+
 docker-compose up -d
-docker exec -ti "$container" bash
+
+docker exec -ti "$project" bash

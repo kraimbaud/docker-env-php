@@ -2,7 +2,6 @@ FROM php:7-fpm
 
 RUN apt-get update && apt-get install -y \
     vim \
-    nano \
     git \
     nodejs \
     zlib1g-dev && docker-php-ext-install zip
