@@ -2,12 +2,7 @@
 
 project="symfony"
 
-docker rm -f "$project"
-docker rm -f mysql
-docker rm -f nginx
-
-docker rmi -f dockersymfony_php
-
+docker-compose build
+docker rm -f $(docker ps -a)
 docker-compose up -d
-
-docker exec -ti "$project" bash
+#docker exec -ti "$project" bash
