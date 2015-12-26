@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-project="symfony"
-
 docker-compose build
-docker rm -f $(docker ps -a)
+docker rm -f symfony
+docker rm -f phpmyadmin
+docker rm -f mysql
+docker rm -f nginx
 docker-compose up -d
-#docker exec -ti "$project" bash
+docker exec -ti symfony bash

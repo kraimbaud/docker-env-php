@@ -17,5 +17,3 @@ RUN chmod a+x /usr/local/bin/symfony
 RUN usermod -u 1000 www-data
 
 ADD symfony.ini /usr/local/etc/php/conf.d/
-#ADD symfony.ini /etc/php5/cli/conf.d/
-#ADD symfony.pool.conf /etc/php5/fpm/pool.d/

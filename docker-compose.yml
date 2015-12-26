@@ -1,3 +1,9 @@
+data:
+    image: debian
+    container_name: data-symfony
+    volumes:
+        - /var/lib/mysql
+
 db:
     image: mysql
     container_name: mysql
@@ -5,9 +11,10 @@ db:
         - 3306:3306
     environment:
         MYSQL_USER: root
-#        MYSQL_PASSWORD: root
-        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        MYSQL_ROOT_PASSWORD: root
         MYSQL_DATABASE: symfony
+    volumes_from:
+        - data
 
 php:
     build: ./docker/php
@@ -29,9 +36,14 @@ nginx:
         - 80:80
         - 443:443
     working_dir: /var/www/html
-#    volumes:
-#        - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-#        - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
     volumes_from:
         - php
+
+phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+        - db
+    ports:
+     - 8080:8080
 
