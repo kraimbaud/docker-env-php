@@ -17,3 +17,4 @@ RUN chmod a+x /usr/local/bin/symfony
 RUN usermod -u 1000 www-data
 
 ADD symfony.ini /usr/local/etc/php/conf.d/
+ADD .vimrc /root

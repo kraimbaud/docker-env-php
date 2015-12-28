@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 docker-compose build
-docker rm -f symfony
-docker rm -f phpmyadmin
-docker rm -f mysql
-docker rm -f nginx
+docker stop $(docker ps -a -q)
+docker rm symfony
+docker rm phpmyadmin
+docker rm mysql
+docker rm nginx
 docker-compose up -d
 docker exec -ti symfony bash

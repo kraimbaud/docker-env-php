@@ -1,3 +1,4 @@
 app/*
 !app/.gitkeep
-!app/index.php
+!app/app.php
+!app/app_dev.php
