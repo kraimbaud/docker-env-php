@@ -28,7 +28,7 @@ php:
         - ./app:/var/www/html
 
 nginx:
-    build: ./docker/nginx
+    image: nginx
     container_name: nginx
     links:
         - php
@@ -36,6 +36,8 @@ nginx:
         - 80:80
         - 443:443
     working_dir: /var/www/html
+    volumes:
+        - ./docker/nginx/conf.d:/etc/nginx/conf.d
     volumes_from:
         - php
 
