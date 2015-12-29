@@ -12,3 +12,17 @@ You will have to [Install Docker](http://docs.docker.com/engine/installation/) f
 
     symfony new symfony_project
 
+### Hosts conviguration
+
+Edit your hosts file
+
+    sudo vim /etc/hosts
+    
+Add those new hostname which target your docker machine ip address
+
+    192.168.99.100 site.dev
+    192.168.99.100 www.site.dev
+    192.168.99.100 site.preprod
+    192.168.99.100 www.site.preprod
+    192.168.99.100 site.prod
+    192.168.99.100 www.site.prod
