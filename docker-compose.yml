@@ -54,11 +54,3 @@ phpmyadmin:
         - db
     ports:
         - 8080:8080
-
-pimpmylog:
-    build: ./docker/pimpmylog
-    container_name: pimpmylog
-    ports:
-        - 8888:80
-    volumes_from:
-        - data
