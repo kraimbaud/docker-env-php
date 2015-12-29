@@ -10,5 +10,5 @@ You will have to [Install Docker](http://docs.docker.com/engine/installation/) f
 
 ### Bootstrap a Symfony project
 
-    symfony new my_project
+    symfony new symfony_project
 

@@ -1,8 +1,11 @@
 data:
     image: debian
     container_name: data-symfony
+    working_dir: /var
     volumes:
         - /var/lib/mysql
+        - /var/log/nginx
+    tty: yes
 
 db:
     image: mysql
@@ -26,6 +29,8 @@ php:
     working_dir: /var/www/html
     volumes:
         - ./app:/var/www/html
+    volumes_from:
+        - data
 
 nginx:
     image: nginx
@@ -40,6 +45,7 @@ nginx:
         - ./docker/nginx/conf.d:/etc/nginx/conf.d
     volumes_from:
         - php
+        - data
 
 phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -49,5 +55,10 @@ phpmyadmin:
     ports:
         - 8080:8080
 
-
-
+pimpmylog:
+    build: ./docker/pimpmylog
+    container_name: pimpmylog
+    ports:
+        - 8888:80
+    volumes_from:
+        - data
