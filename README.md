@@ -39,3 +39,12 @@ Add those new hostnames which target your docker-machine ip address
     # Emulate a production environment
     192.168.99.100 site.prod
     192.168.99.100 www.site.prod
+    
+#### PhpMyAdmin
+
+To Browser PhpMyadmin:
+
+    http://<hostname>:8080
+    
+Login: root, Password: root. (You can change this config in you docker-compose.yml file)
+    
