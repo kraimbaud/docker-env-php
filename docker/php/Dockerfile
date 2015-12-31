@@ -28,3 +28,7 @@ RUN git config --global core.excludesfile '~/.gitignore_global'
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN sed -i -- 's/robbyrussell/wezm+/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+
+# Run config script
+ADD bootstarp.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
