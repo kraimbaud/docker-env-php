@@ -15,7 +15,7 @@ RUN curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 RUN chmod a+x /usr/local/bin/symfony
 
 RUN usermod -u 1000 www-data
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql mbstring
 
 ADD symfony.ini /usr/local/etc/php/conf.d/
 ADD .vimrc /root

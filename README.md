@@ -1,5 +1,5 @@
-Docker Symfony Ship
-=====================
+Docker for Symfony
+==================
 
 A Docker Image to bootstrap Symfony project. 
 You will have to [Install Docker](http://docs.docker.com/engine/installation/) first to use this environment
@@ -16,7 +16,7 @@ So every time you want to rebuild your environment you can just do:
  
 ### Bootstrap a Symfony project
 
-    symfony new symfony_project
+    symfony new symfony-project
 
 Keep this folder name if you are lazy. 
 
@@ -30,13 +30,8 @@ Edit your hosts file
     
 Add those new hostnames which target your docker-machine ip address
 
-    # Emulate a development environment
     192.168.99.100 site.dev
     192.168.99.100 www.site.dev
-    # Emulate a pre production environment
-    192.168.99.100 site.preprod
-    192.168.99.100 www.site.preprod
-    # Emulate a production environment
     192.168.99.100 site.prod
     192.168.99.100 www.site.prod
     
