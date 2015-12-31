@@ -7,4 +7,4 @@ docker rm phpmyadmin
 docker rm mysql
 docker rm nginx
 docker-compose up -d
-docker exec -ti symfony bash
+docker exec -ti symfony zsh
