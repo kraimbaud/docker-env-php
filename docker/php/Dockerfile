@@ -1,14 +1,11 @@
 FROM php:7-fpm
 
-RUN apt-get update && apt-get install -y \
-    vim \
-    zsh \
-    git \
-    nodejs \
-    zlib1g-dev && docker-php-ext-install zip
+# Install Packages
+RUN apt-get update && apt-get install -y vim zsh git nodejs npm zlib1g-dev
+RUN docker-php-ext-install pdo pdo_mysql zip mbstring
 
+# Right access
 RUN usermod -u 1000 www-data
-RUN docker-php-ext-install pdo pdo_mysql mbstring
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php
