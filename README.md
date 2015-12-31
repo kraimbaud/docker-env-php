@@ -1,18 +1,14 @@
 Docker for Symfony
 ==================
 
-A Docker Image to bootstrap Symfony project. 
-You will have to [Install Docker](http://docs.docker.com/engine/installation/) first to use this environment
+A Docker composer to bootstrap Symfony project. 
 
 ### Install and Run the environment
-
-    docker-compose up -d
-
-If you are in a UNIX environment a bash script is available.
-
-So every time you want to rebuild your environment you can just do:
-
-    bash up
+    
+[Install Docker](http://docs.docker.com/engine/installation/) first to use this environment.
+After that you'll be able to build your project.
+    
+    bash build
  
 ### Bootstrap a Symfony project
 
@@ -26,20 +22,24 @@ If you do change the project name, you will have to change Nginx configuration.
 
 Edit your hosts file
 
-    sudo vim /etc/hosts
+    sudo vi /etc/hosts
     
-Add those new hostnames which target your docker-machine ip address
+Add those new hostname which target your docker-machine ip address
 
     192.168.99.100 site.dev
     192.168.99.100 www.site.dev
     192.168.99.100 site.prod
     192.168.99.100 www.site.prod
     
+Go to the web site
+
+    http://site.dev
+    
 #### PhpMyAdmin
 
 To Browser PhpMyadmin:
 
-    http://<hostname>:8080
+    http://site.dev:8080
     
 Login: root, Password: root. (You can change this config in you docker-compose.yml file)
     

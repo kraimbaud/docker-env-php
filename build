@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+docker-compose build
+docker stop $(docker ps -a -q)
+docker rm symfony
+docker rm phpmyadmin
+docker rm mysql
+docker rm nginx
+docker-compose up -d
+docker exec -ti symfony zsh
