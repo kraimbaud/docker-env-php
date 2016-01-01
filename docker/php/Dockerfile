@@ -30,5 +30,6 @@ RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/t
 RUN sed -i -- 's/robbyrussell/wezm+/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
 
 # Run config script
-ADD bootstarp.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+ADD bootstrap.sh /bootstrap.sh
+RUN chmod +x /bootstrap.sh
+RUN /bootstrap.sh
