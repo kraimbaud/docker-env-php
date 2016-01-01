@@ -18,7 +18,7 @@ Keep this folder name if you are lazy.
 
 If you do change the project name, you will have to change Nginx configuration.
 
-### Hosts configuration
+### Hosts Config
 
 Edit your hosts file
 
@@ -43,14 +43,14 @@ To Browser PhpMyadmin:
     
 Login: root, Password: root. (You can change this config in you docker-compose.yml file)
     
-### GIT Congiguration
+### Git Config
 
 Config your git name and email in the **docker/php/bootstrap.sh** file
 
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"
 
-### SSH Congiguration
+### SSH Config
 
 Put in **docker/php/ssh** folder your ssh private and public key (Your _id_rsa_ and _id_rsa.pub_ files).
 
