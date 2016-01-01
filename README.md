@@ -52,6 +52,7 @@ Config your git name and email in the **docker/php/bootstrap.sh** file.
 
 If you want to ignore some files globally, add them in **docker/php/git/.gitignore**.
 Rebuild the image after this modification.
+
     *~
     .DS_Store
     .idea/*
