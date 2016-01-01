@@ -43,3 +43,11 @@ To Browser PhpMyadmin:
     
 Login: root, Password: root. (You can change this config in you docker-compose.yml file)
     
+### GIT Congiguration
+
+
+### SSH Congiguration
+
+Put in **docker/php/ssh** folder your ssh private and public key (Your _id_rsa_ and _id_rsa.pub_ files).
+
+Those files are usually located in your **~/.ssh** folder.
