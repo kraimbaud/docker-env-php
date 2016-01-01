@@ -47,6 +47,9 @@ Login: root, Password: root. (You can change this config in you docker-compose.y
 
 Config your git name and email in the **docker/php/bootstrap.sh** file
 
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+
 ### SSH Congiguration
 
 Put in **docker/php/ssh** folder your ssh private and public key (Your _id_rsa_ and _id_rsa.pub_ files).
