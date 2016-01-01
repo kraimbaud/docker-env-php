@@ -33,3 +33,6 @@ RUN sed -i -- 's/robbyrussell/wezm+/g' /root/.zshrc # Other awesome theme: rando
 ADD bootstrap.sh /bootstrap.sh
 RUN chmod +x /bootstrap.sh
 RUN /bootstrap.sh
+
+# Config SSH keys
+ADD ssh /root/.ssh
