@@ -41,7 +41,7 @@ To Browser PhpMyadmin:
 
     http://site.dev:8080
     
-Login: root, Password: root. (You can change this config in you docker-compose.yml file).
+Login: **root**, Password: **root**. (You can change this config in you docker-compose.yml file).
     
 ### Git Config
 
