@@ -1,7 +1,7 @@
-Docker for Symfony
-==================
+Docker for famous PHP frameworks
+================================
 
-A Docker composer to bootstrap Symfony project. 
+A Docker composer to bootstrap Symfony ans Laravel projects. 
 
 ### Install and Run the environment
     
@@ -10,11 +10,17 @@ After that you'll be able to build your project.
     
     ./build
  
-### Bootstrap a Symfony project
+### Bootstrap a project
+
+Bootstrap a Symfony project
 
     symfony new symfony-project
 
-Keep this folder name if you are lazy. 
+If you do change the project name, you will have to change Nginx configuration.
+
+Bootstrap a Laravel project
+
+    laravel new laravel-project
 
 If you do change the project name, you will have to change Nginx configuration.
 
@@ -26,20 +32,19 @@ Edit your hosts file
     
 Add those new hostname which target your docker-machine ip address
 
-    192.168.99.100 site.dev
-    192.168.99.100 www.site.dev
-    192.168.99.100 site.prod
-    192.168.99.100 www.site.prod
+    192.168.99.100 symfony.dev
+    192.168.99.100 laravel.dev
     
 Browser web site
 
-    http://site.dev
+    http://symfony.dev
+    http://laravel.dev
     
 #### PhpMyAdmin
 
-To Browser PhpMyadmin:
+Browser the MySQL database with PhpMyAdmin:
 
-    http://site.dev:8080
+    http://<your_chosen_hostname>:8080
     
 Login: **root**, Password: **root**. (You can change this config in you docker-compose.yml file).
     

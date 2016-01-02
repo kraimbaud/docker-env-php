@@ -1,6 +1,6 @@
 php:
     build: ./docker/php
-    container_name: symfony
+    container_name: php
     links:
         - db
     ports:
@@ -35,13 +35,12 @@ db:
     environment:
         MYSQL_USER: root
         MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: symfony
     volumes_from:
         - data
 
 data:
     image: debian
-    container_name: data-symfony
+    container_name: data-php
     working_dir: /var
     volumes:
         - /var/lib/mysql
