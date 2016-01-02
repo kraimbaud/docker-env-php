@@ -16,8 +16,6 @@ Bootstrap a Symfony project
 
     symfony new symfony-project
 
-If you do change the project name, you will have to change Nginx configuration.
-
 Bootstrap a Laravel project
 
     laravel new laravel-project

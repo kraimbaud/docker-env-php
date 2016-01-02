@@ -15,13 +15,13 @@ RUN usermod -u 1000 www-data
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
+# Install Laravel Installer
+RUN composer global require "laravel/installer"
+RUN echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> /root/.zshrc
+
 # Install the Symfony Installer
 RUN curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 RUN chmod a+x /usr/local/bin/symfony
-
-# Install Laravel Installer
-RUN composer global require "laravel/installer"
-RUN echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 
 # Add Config
 ADD php.ini /usr/local/etc/php/conf.d/
