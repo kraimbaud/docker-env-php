@@ -1,7 +1,7 @@
-Docker for famous PHP frameworks
-================================
+Docker for famous PHP frameworks & CMS
+======================================
 
-A Docker composer to bootstrap Symfony ans Laravel projects. 
+A Docker composer to bootstrap Symfony, Laravel and Wordpress projects. 
 
 ### Install and Run the environment
     
@@ -20,6 +20,10 @@ Bootstrap a Laravel project
 
     laravel new laravel-project
 
+Bootstrap a Wordpress project
+
+    git clone https://github.com/WordPress/WordPress.git wordpress-project
+
 If you do change the project name, you will have to change Nginx configuration.
 
 ### Hosts Config
@@ -31,12 +35,16 @@ Edit your hosts file
 Add those new hostname which target your docker-machine ip address
 
     192.168.99.100 symfony.dev
+    192.168.99.100 symfony.prod
     192.168.99.100 laravel.dev
+    192.168.99.100 wordpress.dev
     
 Browser web site
 
     http://symfony.dev
+    http://symfony.prod
     http://laravel.dev
+    http://wordpress.dev
     
 #### PhpMyAdmin
 

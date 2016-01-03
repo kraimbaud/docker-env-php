@@ -2,7 +2,7 @@ FROM php:7-fpm
 
 # Install Packages
 RUN apt-get update && apt-get install -y vim zsh git nodejs npm zlib1g-dev
-RUN docker-php-ext-install pdo pdo_mysql zip mbstring
+RUN docker-php-ext-install pdo pdo_mysql mysqli zip mbstring
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
