@@ -38,9 +38,14 @@ Add those new hostname which target your docker-machine ip address
     192.168.99.100 symfony.prod
     192.168.99.100 laravel.dev
     192.168.99.100 wordpress.dev
+    192.168.99.100 local.dev
     
 Browser web site
 
+    # Use PHP with Apache
+    http://local.dev:8888 
+       
+    # Use PHP-fpm with Nginx
     http://symfony.dev
     http://symfony.prod
     http://laravel.dev

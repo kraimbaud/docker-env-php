@@ -2,9 +2,10 @@
 
 docker-compose build
 docker stop $(docker ps -a -q)
-docker rm php
+docker rm php-apache
+docker rm php-fpm
 docker rm phpmyadmin
 docker rm mysql
 docker rm nginx
 docker-compose up -d
-docker exec -ti php zsh
+docker exec -ti php-fpm zsh
