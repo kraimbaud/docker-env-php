@@ -34,11 +34,11 @@ Edit your hosts file
     
 Add those new hostname which target your docker-machine ip address
 
-    192.168.99.100 symfony.dev
-    192.168.99.100 symfony.prod
-    192.168.99.100 laravel.dev
-    192.168.99.100 wordpress.dev
-    192.168.99.100 local.dev
+    192.168.64.2 symfony.dev
+    192.168.64.2 symfony.prod
+    192.168.64.2 laravel.dev
+    192.168.64.2 wordpress.dev
+    192.168.64.2 local.dev
     
 Browser web site
 
