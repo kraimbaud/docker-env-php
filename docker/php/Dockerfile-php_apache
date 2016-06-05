@@ -1,5 +1,8 @@
 FROM php:7-apache
 
+ENV gitEmail="your@email.example"
+ENV gitName="Your name"
+
 # Add Config
 ADD php.ini /usr/local/etc/php/conf.d/
 ADD vim/.vimrc /root

@@ -27,6 +27,9 @@ php-fpm:
     volumes_from:
         - data
     tty: true
+#    entrypoint: /docker/php/entrypoint.sh
+#    env_file:
+#        - ./docker.env
 
 nginx:
     image: nginx
@@ -56,7 +59,7 @@ db:
 
 data:
     image: debian
-    container_name: data-php
+    container_name: data
     working_dir: /var
     volumes:
         - /var/lib/mysql
