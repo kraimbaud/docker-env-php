@@ -27,9 +27,9 @@ php-fpm:
     volumes_from:
         - data
     tty: true
-#    entrypoint: /docker/php/entrypoint.sh
-#    env_file:
-#        - ./docker.env
+    env_file:
+        - ./docker.env
+#    command: sh /command.sh
 
 nginx:
     image: nginx

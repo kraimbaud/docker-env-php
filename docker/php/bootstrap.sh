@@ -24,5 +24,5 @@ curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 chmod a+x /usr/local/bin/symfony
 
 git config --global core.excludesfile '~/.gitignore_global'
-git config --global user.email ${gitEmail}
-git config --global user.name ${gitName}
+git config --global user.email "${gitEmail}"
+git config --global user.name "${gitName}"

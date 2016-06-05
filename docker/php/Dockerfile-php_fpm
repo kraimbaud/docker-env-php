@@ -13,5 +13,5 @@ ADD bootstrap.sh /bootstrap.sh
 RUN chmod +x /bootstrap.sh
 RUN /bootstrap.sh
 
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+ADD command.sh /command.sh
+RUN chmod +x /command.sh
