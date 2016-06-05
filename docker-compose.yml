@@ -16,7 +16,7 @@ php-apache:
 php-fpm:
     build: ./docker/php
     dockerfile: Dockerfile-php_fpm
-    container_name: php
+    container_name: php-fpm
     links:
         - db
     ports:
@@ -27,6 +27,9 @@ php-fpm:
     volumes_from:
         - data
     tty: true
+#    entrypoint: /docker/php/entrypoint.sh
+#    env_file:
+#        - ./docker.env
 
 nginx:
     image: nginx

@@ -4,3 +4,5 @@ app/*
 
 docker/php/ssh/*
 !docker/php/ssh/.gitkeep
+
+docker.env
