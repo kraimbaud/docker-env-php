@@ -29,7 +29,6 @@ php-fpm:
     tty: true
     env_file:
         - ./docker.env
-#    command: sh /command.sh
 
 nginx:
     image: nginx
