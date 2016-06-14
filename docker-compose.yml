@@ -1,26 +1,11 @@
-php-apache:
-    build: ./docker/php
-    dockerfile: Dockerfile-php_apache
-    container_name: php-apache
-    links:
-        - db
-    ports:
-        - 8888:80
-    working_dir: /var/www/html/
-    volumes:
-        - ./app:/var/www/html
-    volumes_from:
-        - data
-    tty: true
-
 php-fpm:
     build: ./docker/php
-    dockerfile: Dockerfile-php_fpm
     container_name: php-fpm
     links:
         - db
     ports:
         - 9000:9000
+        - 8448:8448
     working_dir: /var/www/html/
     volumes:
         - ./app:/var/www/html

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker-compose up -d
+docker exec -ti php-fpm zsh
