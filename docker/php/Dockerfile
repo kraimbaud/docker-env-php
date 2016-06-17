@@ -44,4 +44,7 @@ ADD php.ini /usr/local/etc/php/conf.d/
 ADD vim/.vimrc /root
 ADD git/.gitignore_global /root
 ADD ssh /root/.ssh
+ADD ssh /root/.ssh
+RUN chmod 600 ~/.ssh/id_rsa
+RUN chmod 600 ~/.ssh/id_rsa.pub
 ADD command.sh /command.sh
