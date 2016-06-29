@@ -18,6 +18,7 @@ RUN git config --global user.name "${gitName}"
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN sed -i -- 's/robbyrussell/wezm+/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+RUN echo "plugins=(git symfony2)" >> ~/.zshrc
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php
