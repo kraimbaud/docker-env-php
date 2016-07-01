@@ -58,3 +58,13 @@ phpmyadmin:
         - db
     ports:
         - 8080:80
+
+gitlab:
+    image: gitlab/gitlab-ce
+    container_name: gitlab
+    volumes_from:
+        - data
+    ports:
+        - 8080:8444
+        - 443:444
+        - 22:22
