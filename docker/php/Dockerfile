@@ -9,7 +9,7 @@ ENV gitName="Your name"
 
 # Install Packages
 RUN apt-get update && apt-get install -y vim zsh git zlib1g-dev libicu-dev
-RUN docker-php-ext-install pdo pdo_mysql mysqli zip mbstring bcmath intl opcache calendar
+RUN docker-php-ext-install pdo pdo_mysql mysqli zip mbstring bcmath intl opcache calendar pcntl
 
 RUN git config --global core.excludesfile '~/.gitignore_global'
 RUN git config --global user.email "${gitEmail}"
@@ -18,7 +18,7 @@ RUN git config --global user.name "${gitName}"
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN sed -i -- 's/robbyrussell/wezm+/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
-RUN echo "plugins=(git symfony2)" >> ~/.zshrc
+RUN echo "plugins=(symfony2)" >> ~/.zshrc
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php

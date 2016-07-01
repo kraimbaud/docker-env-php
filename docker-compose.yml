@@ -6,6 +6,7 @@ php-fpm:
     ports:
         - 9000:9000
         - 8448:8448
+        - 8000:8000
     working_dir: /var/www/html/
     volumes:
         - ./app:/var/www/html
