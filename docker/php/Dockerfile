@@ -8,8 +8,13 @@ ENV gitEmail="your@email.example"
 ENV gitName="Your name"
 
 # Install Packages
-RUN apt-get update && apt-get install -y vim zsh git zlib1g-dev libicu-dev
-RUN docker-php-ext-install pdo pdo_mysql mysqli zip mbstring bcmath intl opcache calendar pcntl
+RUN apt-get update && apt-get install -y \
+    vim zsh git zlib1g-dev libicu-dev libexif-dev wkhtmltopdf
+RUN docker-php-ext-configure \
+    gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-install \
+    pdo pdo_mysql mysqli zip mbstring bcmath intl opcache calendar pcntl gd \
+    iconv mcrypt exif
 
 RUN git config --global core.excludesfile '~/.gitignore_global'
 RUN git config --global user.email "${gitEmail}"
