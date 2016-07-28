@@ -18,8 +18,6 @@ RUN docker-php-ext-install \
     iconv mcrypt exif
 
 RUN git config --global core.excludesfile '~/.gitignore_global'
-RUN git config --global user.email "${gitEmail}"
-RUN git config --global user.name "${gitName}"
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -54,4 +52,5 @@ ADD ssh /root/.ssh
 ADD ssh /root/.ssh
 RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
 RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
-ADD command.sh /command.sh
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod 777 /entrypoint.sh

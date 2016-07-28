@@ -29,6 +29,8 @@ php-fpm:
     tty: true
     env_file:
         - ./docker.env
+    entrypoint: /entrypoint.sh
+
 
 nginx:
     image: nginx
