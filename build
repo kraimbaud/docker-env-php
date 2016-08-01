@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+FILE='docker.env'
+
+if [ -a $FILE ];
+then
+   echo "File $FILE exists."
+else
+   echo "File $FILE does not exist."
+   cp $FILE.dist $FILE
+fi
+
 docker-compose build
 docker stop $(docker ps -a -q)
 docker rm php-fpm

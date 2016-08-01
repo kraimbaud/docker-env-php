@@ -3,10 +3,6 @@ FROM php:7-fpm
 # Right access
 RUN usermod -u 1000 www-data
 
-# Env variables
-ENV gitEmail="your@email.example"
-ENV gitName="Your name"
-
 # Install Packages
 RUN apt-get update && apt-get install -y \
     vim zsh git zlib1g-dev libicu-dev libexif-dev wkhtmltopdf \
