@@ -7,13 +7,13 @@ php-apache:
         - 80:80
     working_dir: /var/www/html/
     volumes:
-        - ./app:/var/www/html
+        - ../:/var/www/html
     volumes_from:
         - data
     tty: true
 
 php-fpm:
-    build: ./docker/php
+    build: ./php
     container_name: php-fpm
     links:
         - db
@@ -23,7 +23,7 @@ php-fpm:
         - 8000:8000
     working_dir: /var/www/html/
     volumes:
-        - ./app:/var/www/html
+        - ../:/var/www/html
     volumes_from:
         - data
     tty: true
@@ -42,7 +42,7 @@ nginx:
         - 443:443
     working_dir: /var/www/html
     volumes:
-        - ./docker/nginx/conf.d:/etc/nginx/conf.d
+        - ./nginx/conf.d:/etc/nginx/conf.d
     volumes_from:
         - php-fpm
         - data

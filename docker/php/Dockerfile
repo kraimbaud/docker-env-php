@@ -38,7 +38,6 @@ RUN npm install -g bower
 RUN npm install -g gulp-cli
 RUN npm install -g grunt-cli
 RUN npm install -g ungit
-RUN npm install -g express-generator
 
 # Add Config
 ADD php.ini /usr/local/etc/php/conf.d/

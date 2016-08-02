@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
 
-FILE='docker.env'
+cd docker
 
-if [ -a $FILE ];
+file='docker.env'
+gitName="$(git config --global user.name)"
+gitEmail="$(git config --global user.email)"
+
+if [ -a $file ];
 then
-   echo "File $FILE exists."
+   echo "$file file exists."
 else
-   echo "File $FILE does not exist."
-   cp $FILE.dist $FILE
+   echo "$file file does not exist."
+   touch $file
+   echo "gitEmail=\"$gitEmail\"" >> $file
+   echo "gitName=\"$gitName\"" >> $file
+   echo "$file file has been created"
 fi
 
 docker-compose build
