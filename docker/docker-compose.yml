@@ -7,7 +7,7 @@ php-apache:
         - 80:80
     working_dir: /var/www/html/
     volumes:
-        - ../:/var/www/html
+        - ../app:/var/www/html
     volumes_from:
         - data
     tty: true
@@ -23,7 +23,7 @@ php-fpm:
         - 8000:8000
     working_dir: /var/www/html/
     volumes:
-        - ../:/var/www/html
+        - ../app:/var/www/html
     volumes_from:
         - data
     tty: true
