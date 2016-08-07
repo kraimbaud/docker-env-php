@@ -32,6 +32,12 @@ RUN echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> /root/.zshrc
 RUN curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 RUN chmod a+x /usr/local/bin/symfony
 
+# PHP Deployer
+RUN curl -LO http://deployer.org/deployer.phar
+RUN mv deployer.phar /usr/local/bin/dep
+RUN chmod +x /usr/local/bin/dep
+RUN dep self-update
+
 #NodeJS Lib
 RUN apt-get install -y nodejs nodejs-legacy npm
 RUN npm install -g bower
@@ -43,9 +49,15 @@ RUN npm install -g ungit
 ADD php.ini /usr/local/etc/php/conf.d/
 ADD vim/.vimrc /root
 ADD git/.gitignore_global /root
+
+# SSh Config
 ADD ssh /root/.ssh
 ADD ssh /root/.ssh
 RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
 RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
+#RUN eval $(ssh-agent)
+#RUN ssh-add
+
+# ENTRYPOINT
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh

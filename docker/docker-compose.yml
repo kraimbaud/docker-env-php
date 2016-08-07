@@ -31,7 +31,6 @@ php-fpm:
         - ./docker.env
     entrypoint: /entrypoint.sh
 
-
 nginx:
     image: nginx
     container_name: nginx
