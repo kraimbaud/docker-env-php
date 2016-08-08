@@ -38,6 +38,16 @@ RUN mv deployer.phar /usr/local/bin/dep
 RUN chmod +x /usr/local/bin/dep
 RUN dep self-update
 
+# PHP CS Fixer
+RUN curl -L https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v1.11.6/php-cs-fixer.phar -o php-cs-fixer
+RUN chmod a+x php-cs-fixer
+RUN mv php-cs-fixer /usr/local/bin/php-cs-fixer
+
+# PHP Unit
+RUN wget https://phar.phpunit.de/phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
+
 #NodeJS Lib
 RUN apt-get install -y nodejs nodejs-legacy npm
 RUN npm install -g bower
