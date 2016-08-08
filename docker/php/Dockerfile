@@ -44,7 +44,7 @@ RUN chmod a+x php-cs-fixer
 RUN mv php-cs-fixer /usr/local/bin/php-cs-fixer
 
 # PHP Unit
-RUN wget https://phar.phpunit.de/phpunit.phar
+RUN curl https://phar.phpunit.de/phpunit.phar -L -o phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
