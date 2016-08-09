@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
+todo=${1-up}
+
 cd docker
 
-docker-compose up -d
-docker exec -ti php-fpm zsh
+./up.sh $todo

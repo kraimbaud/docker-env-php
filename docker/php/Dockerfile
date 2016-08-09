@@ -38,6 +38,16 @@ RUN mv deployer.phar /usr/local/bin/dep
 RUN chmod +x /usr/local/bin/dep
 RUN dep self-update
 
+# PHP CS Fixer
+RUN curl -L https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v1.11.6/php-cs-fixer.phar -o php-cs-fixer
+RUN chmod a+x php-cs-fixer
+RUN mv php-cs-fixer /usr/local/bin/php-cs-fixer
+
+# PHP Unit
+RUN curl https://phar.phpunit.de/phpunit.phar -L -o phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
+
 #NodeJS Lib
 RUN apt-get install -y nodejs nodejs-legacy npm
 RUN npm install -g bower
@@ -55,6 +65,8 @@ ADD ssh /root/.ssh
 ADD ssh /root/.ssh
 RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
 RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
+ADD ssh.sh /ssh.sh
+RUN chmod 777 /ssh.sh
 
 # ENTRYPOINT
 ADD entrypoint.sh /entrypoint.sh
