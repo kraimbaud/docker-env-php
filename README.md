@@ -8,7 +8,7 @@ A Docker composer to bootstrap Symfony, Laravel and Wordpress projects.
 [Install Docker](http://docs.docker.com/engine/installation/) first to use this environment.
 After that you'll be able to build your project.
     
-    ./build
+    ./up build
  
 ### Bootstrap a project
 
@@ -26,52 +26,21 @@ Bootstrap a Wordpress project
 
 If you do change the project name, you will have to change Nginx configuration.
 
-### Hosts Config
-
-Edit your hosts file
-
-    sudo vi /etc/hosts
-    
-Add those new hostname which target your docker-machine ip address
-
-    192.168.64.2 symfony.dev
-    192.168.64.2 symfony.prod
-    192.168.64.2 laravel.dev
-    192.168.64.2 wordpress.dev
-    192.168.64.2 local.dev
-    
 Browser web site
 
     # Use PHP with Apache
-    http://local.dev:8888 
+    http://localhost:8888 
        
-    # Use PHP-fpm with Nginx
-    http://symfony.dev
-    http://symfony.prod
-    http://laravel.dev
-    http://wordpress.dev
-    
+    php bin/console server:start 0.0.0.0:8000
+
 #### PhpMyAdmin
 
 Browser the MySQL database with PhpMyAdmin:
 
-    http://<your_chosen_hostname>:8080
+    http://localhost:8080
     
 Login: **root**, Password: **root**. (You can change this config in you docker-compose.yml file).
     
-### Git Config
-
-Config your git name and email in the **docker/php/bootstrap.sh** file.
-
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
-
-If you want to ignore some files globally, add them in **docker/php/git/.gitignore**.
-Rebuild the image after this modification.
-
-    *~
-    .DS_Store
-    .idea/*
 
 ### SSH Config
 
