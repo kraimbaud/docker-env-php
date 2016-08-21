@@ -5,20 +5,45 @@ RUN usermod -u 1000 www-data
 
 # Install Packages
 RUN apt-get update && apt-get install -y \
-    vim zsh git zlib1g-dev libicu-dev libexif-dev wkhtmltopdf \
-    libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev
+    vim \
+    zsh \
+    git \
+    zlib1g-dev \
+    libicu-dev \
+    libexif-dev \
+    wkhtmltopdf \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libmcrypt-dev \
+    libpng12-dev \
+    httpie
+
 RUN docker-php-ext-configure \
     gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-RUN docker-php-ext-install \
-    pdo pdo_mysql mysqli zip mbstring bcmath intl opcache calendar pcntl gd \
-    iconv mcrypt exif
 
+RUN docker-php-ext-install \
+    pdo \
+    pdo_mysql \
+    mysqli \
+    zip \
+    mbstring \
+    bcmath \
+    intl \
+    opcache \
+    calendar \
+    pcntl \
+    gd \
+    iconv \
+    mcrypt \
+    exif
+
+# Git config
 RUN git config --global core.excludesfile '~/.gitignore_global'
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN sed -i -- 's/robbyrussell/wezm+/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
-RUN echo "plugins=(symfony2)" >> ~/.zshrc
+RUN echo "plugins=(git symfony2)" >> ~/.zshrc
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php
@@ -48,14 +73,14 @@ RUN curl https://phar.phpunit.de/phpunit.phar -L -o phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
-#NodeJS Lib
+# NodeJS Lib
 RUN apt-get install -y nodejs nodejs-legacy npm
 RUN npm install -g bower
 RUN npm install -g gulp-cli
 RUN npm install -g grunt-cli
 RUN npm install -g ungit
 
-# Add Config
+# Add some config
 ADD php.ini /usr/local/etc/php/conf.d/
 ADD vim/.vimrc /root
 ADD git/.gitignore_global /root
