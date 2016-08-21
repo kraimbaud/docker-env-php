@@ -87,7 +87,6 @@ ADD git/.gitignore_global /root
 
 # SSh Config
 ADD ssh /root/.ssh
-ADD ssh /root/.ssh
 RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
 RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
 
