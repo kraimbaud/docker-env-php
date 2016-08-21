@@ -90,8 +90,6 @@ ADD ssh /root/.ssh
 ADD ssh /root/.ssh
 RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
 RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
-ADD ssh.sh /ssh.sh
-RUN chmod 777 /ssh.sh
 
 # ENTRYPOINT
 ADD entrypoint.sh /entrypoint.sh
