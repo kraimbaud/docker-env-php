@@ -1,24 +1,9 @@
-php-apache:
-    image: php:7-apache
-    container_name: php-apache
-    links:
-        - db
-    ports:
-        - 80:80
-    working_dir: /var/www/html/
-    volumes:
-        - ../app:/var/www/html
-    volumes_from:
-        - data
-    tty: true
-
 php-fpm:
     build: ./php
     container_name: php-fpm
     links:
         - db
     ports:
-        - 9000:9000
         - 8448:8448
         - 8000:8000
     working_dir: /var/www/html/
@@ -37,7 +22,7 @@ nginx:
     links:
         - php-fpm
     ports:
-        - 8888:80
+        - 80:80
         - 443:443
     working_dir: /var/www/html
     volumes:
