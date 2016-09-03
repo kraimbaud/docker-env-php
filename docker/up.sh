@@ -5,7 +5,6 @@ todo=${1-up}
 remove_containers () {
     docker stop $(docker ps -a -q)
     docker rm php-fpm
-    docker rm php-apache
     docker rm phpmyadmin
     docker rm mysql
     docker rm nginx
