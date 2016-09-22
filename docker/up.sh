@@ -4,10 +4,10 @@ todo=${1-up}
 
 remove_containers () {
     docker stop $(docker ps -a -q)
-    docker rm php-fpm
-    docker rm phpmyadmin
-    docker rm mysql
-    docker rm nginx
+    docker rm php-fpm-melody
+    docker rm phpmyadmin-melody
+    docker rm mysql-melody
+    docker rm nginx-melody
 }
 
 up () {
