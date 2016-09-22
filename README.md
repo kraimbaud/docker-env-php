@@ -31,7 +31,7 @@ Browser web site
     # Use PHP with Apache
     http://localhost:8888 
        
-    php bin/console server:start 0.0.0.0:8000
+    sf server:start 0.0.0.0:8000
 
 #### PhpMyAdmin
 
