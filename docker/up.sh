@@ -12,7 +12,7 @@ remove_containers () {
 
 up () {
     docker-compose up -d
-    docker exec -ti php-fpm zsh
+    docker exec -ti php-fpm-melody zsh
 }
 
 if [ $todo = "build" ]; then
