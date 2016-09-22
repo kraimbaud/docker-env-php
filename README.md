@@ -44,9 +44,12 @@ Login: **root**, Password: **root**. (You can change this config in you docker-c
 
 ### SSH Config
 
-Put in **docker/php/ssh** folder your ssh private and public key (Your _id_rsa_ and _id_rsa.pub_ files).
+Add the ssh config to your container and rebuild the project
 
-Those files are usually located in your **~/.ssh** folder.
+     $ cp ~/.ssh/* $(pwd)/docker/php/ssh
+     $ ./up build
+     $ eval $(ssh-agent)  // Started the SSH agent
+     $ ssh-add            // Add your private key to it
 
 To know how to generate a ssh key, 
 follow this [GitHub tutorial](https://help.github.com/articles/generating-ssh-keys/).
