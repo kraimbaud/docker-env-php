@@ -6,6 +6,6 @@ docker/php/ssh/*
 !docker/php/ssh/.gitkeep
 
 docker/nginx/conf.d/*
-!docker/nginx/conf.d/symfony.conf
-
+!docker/nginx/conf.d/default.conf
+s
 docker.env
