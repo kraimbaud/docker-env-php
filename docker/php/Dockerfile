@@ -49,10 +49,6 @@ RUN sed -i -- 's/plugins=(git)/plugins=(git symfony2)/g' ~/.zshrc # Add symfony2
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
-# Install Laravel Installer
-RUN composer global require "laravel/installer"
-RUN echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> /root/.zshrc
-
 # Install the Symfony Installer
 RUN curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 RUN chmod a+x /usr/local/bin/symfony
