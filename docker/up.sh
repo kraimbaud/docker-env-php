@@ -6,7 +6,7 @@ remove_containers () {
     docker stop $(docker ps -a -q)
     docker rm php-fpm-melody
     docker rm phpmyadmin-melody
-    docker rm mysql-melody
+    docker rm database-melody
     docker rm nginx-melody
 }
 

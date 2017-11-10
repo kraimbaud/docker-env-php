@@ -2,7 +2,7 @@ php-fpm:
     build: ./php
     container_name: php-fpm-melody
     links:
-        - db
+        - database
     ports:
         - 8000:8000
     working_dir: /var/www/html/
@@ -30,9 +30,9 @@ nginx:
         - php-fpm
         - data
 
-db:
+database:
     image: mysql
-    container_name: mysql-melody
+    container_name: database-melody
     ports:
         - 3306:3306
     environment:
@@ -54,6 +54,6 @@ phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin-melody
     links:
-        - db
+        - database
     ports:
         - 8080:80
