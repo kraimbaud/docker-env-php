@@ -6,6 +6,7 @@ RUN usermod -u 1000 www-data
 # Install Packages
 RUN apt-get update && apt-get install -y \
     vim \
+    nano \
     zsh \
     git \
     zlib1g-dev \
