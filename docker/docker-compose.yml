@@ -4,7 +4,6 @@ php-fpm:
     links:
         - db
     ports:
-        - 8448:8448
         - 8000:8000
     working_dir: /var/www/html/
     volumes:

@@ -7,5 +7,5 @@ docker/php/ssh/*
 
 docker/nginx/conf.d/*
 !docker/nginx/conf.d/default.conf
-s
+
 docker.env
