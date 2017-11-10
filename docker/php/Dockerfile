@@ -71,7 +71,7 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 
 # Install NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash
-RUN apt-get install -y nodejs yarn
+RUN apt-get install -y nodejs
 
 # Symbolic links for NodeJS
 RUN ln -s /usr/bin/nodejs /usr/local/bin/node
