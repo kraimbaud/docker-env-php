@@ -31,7 +31,7 @@ nginx:
         - data
 
 database:
-    image: mysql
+    image: mysql:8
     container_name: database-melody
     ports:
         - 3306:3306
@@ -42,7 +42,7 @@ database:
         - data
 
 data:
-    image: debian
+    image: debian:jessie
     container_name: data-melody
     working_dir: /var
     volumes:
