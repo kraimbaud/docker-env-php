@@ -51,7 +51,7 @@ data:
     tty: yes
 
 phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin/phpmyadmin:4.7
     container_name: phpmyadmin-melody
     links:
         - database
