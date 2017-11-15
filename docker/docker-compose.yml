@@ -1,59 +1,54 @@
-php-fpm:
-    build: ./php
-    container_name: php-fpm-melody
-    links:
-        - database
-    ports:
-        - 8000:8000
-    working_dir: /var/www/html/
-    volumes:
-        - ../app:/var/www/html
-    volumes_from:
-        - data
-    tty: true
-    env_file:
-        - ./docker.env
-    entrypoint: /entrypoint.sh
+version: '3'
+services:
+    php-fpm:
+        build: ./php
+        container_name: php-fpm-melody
+        links:
+            - database
+        ports:
+            - 8000:8000
+        working_dir: /var/www/html/
+        volumes:
+            - ../app:/var/www/html
+        tty: true
+        env_file:
+            - ./docker.env
+        entrypoint: /entrypoint.sh
 
-nginx:
-    image: nginx
-    container_name: nginx-melody
-    links:
-        - php-fpm
-    ports:
-        - 80:80
-        - 443:443
-    working_dir: /var/www/html
-    volumes:
-        - ./nginx/conf.d:/etc/nginx/conf.d
-    volumes_from:
-        - php-fpm
-        - data
+    nginx:
+        image: nginx:latest
+        container_name: nginx-melody
+        links:
+            - php-fpm
+        ports:
+            - 80:80
+            - 443:443
+        working_dir: /var/www/html
+        volumes:
+            - ./nginx/conf.d:/etc/nginx/conf.d
 
-database:
-    image: mysql:8
-    container_name: database-melody
-    ports:
-        - 3306:3306
-    environment:
-        MYSQL_USER: root
-        MYSQL_ROOT_PASSWORD: root
-    volumes_from:
-        - data
+    database:
+        image: mysql:8
+        container_name: database-melody
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_USER: root
+            MYSQL_ROOT_PASSWORD: root
 
-data:
-    image: debian:jessie
-    container_name: data-melody
-    working_dir: /var
-    volumes:
-        - /var/lib/mysql
-        - /var/log/nginx
-    tty: yes
+    data:
+        image: debian:jessie
+        container_name: data-melody
+        working_dir: /var
+        volumes:
+            - /var/lib/mysql
+            - /var/log/nginx
+        tty: yes
 
-phpmyadmin:
-    image: phpmyadmin/phpmyadmin:4.7
-    container_name: phpmyadmin-melody
-    links:
-        - database
-    ports:
-        - 8080:80
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:4.7
+        container_name: phpmyadmin-melody
+        links:
+            - database
+        ports:
+            - 8080:80
