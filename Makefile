@@ -12,5 +12,5 @@ start:
 stop:
 	cd docker; docker-compose stop
 
-rm:
+rm: stop
 	cd docker; docker-compose rm
