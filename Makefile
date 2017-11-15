@@ -14,3 +14,6 @@ stop:
 
 rm: stop
 	cd docker; docker-compose rm
+
+exec:
+	docker-compose exec php-fpm-melody zsh
