@@ -1,4 +1,4 @@
-.PHONY: build up start stop rm
+.PHONY: build up start stop rm exec
 
 build:
 	cd docker; ./up build
