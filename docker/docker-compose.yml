@@ -4,7 +4,7 @@ services:
         build: ./php
         container_name: php-fpm-melody
         links:
-            - database
+            - db
         ports:
             - 8000:8000
         working_dir: /var/www/html/
@@ -27,9 +27,9 @@ services:
         volumes:
             - ./nginx/conf.d:/etc/nginx/conf.d
 
-    database:
+    db:
         image: mysql:8
-        container_name: database-melody
+        container_name: db-melody
         ports:
             - 3306:3306
         environment:
@@ -49,6 +49,6 @@ services:
         image: phpmyadmin/phpmyadmin:4.7
         container_name: phpmyadmin-melody
         links:
-            - database
+            - db
         ports:
             - 8080:80
