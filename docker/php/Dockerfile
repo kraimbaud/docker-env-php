@@ -49,6 +49,7 @@ RUN sed -i -- 's/plugins=(git)/plugins=(git symfony2)/g' ~/.zshrc # Add symfony2
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # Install the Symfony Installer
 RUN curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
