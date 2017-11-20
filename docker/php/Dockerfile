@@ -44,7 +44,7 @@ RUN git config --global core.excludesfile '~/.gitignore_global'
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN sed -i -- 's/robbyrussell/wezm+/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
-RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' ~/.zshrc # Add symfony2 plugin
+RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' /root/.zshrc # Add symfony2 plugin
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php
