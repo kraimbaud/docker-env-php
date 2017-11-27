@@ -1,10 +1,12 @@
 FROM nginx:stable
 
-RUN apt-get update && apt-get upgrade && apt-get install -y \
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y \
     vim \
     nano \
     zsh \
     git \
+    curl \
+    wget \
     certbot
 
 # Instal Oh my Zsh
