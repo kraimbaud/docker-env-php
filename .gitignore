@@ -1,11 +1,10 @@
-app/*
+app
 !app/.gitkeep
-!app/index.php
 
-docker/php/ssh/*
+docker/php/ssh
 !docker/php/ssh/.gitkeep
 
-docker/nginx/conf.d/*
+docker/nginx/conf.d
 !docker/nginx/conf.d/default.conf
 
 #Certbot
