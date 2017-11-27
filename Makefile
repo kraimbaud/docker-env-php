@@ -4,6 +4,7 @@ container?=php-fpm-melody
 env?=dev
 
 build:
+	cd docker; bash up.sh
 	cd docker; docker-compose build
 	cd docker; docker-compose up -d
 	docker ps

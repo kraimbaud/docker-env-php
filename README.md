@@ -24,7 +24,7 @@ Browser the MySQL database with PhpMyAdmin:
 
     http://localhost:8080
 
-Login: **root**, Password: **root**. (You can change this config in you docker-compose.yml file).
+Login: **admin**, Password: **admin**. (You can change this config in you docker-compose.yml file).
 
 ### SSH Config
 

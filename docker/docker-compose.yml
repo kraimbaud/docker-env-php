@@ -35,8 +35,11 @@ services:
         ports:
             - 3306:3306
         environment:
-            MYSQL_USER: root
-            MYSQL_ROOT_PASSWORD: root
+            - MYSQL_RANDOM_ROOT_PASSWORD=true
+            #- MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=melody
+            - MYSQL_USER=admin
+            - MYSQL_PASSWORD=admin
 
     data:
         image: debian:jessie
