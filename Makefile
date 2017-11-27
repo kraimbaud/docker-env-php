@@ -1,6 +1,7 @@
 .PHONY: build up start stop rm exec
 
-APP_CONTAINER?=php-fpm-melody
+container?=php-fpm-melody
+env?=dev
 
 build:
 	cd docker; ./up build
@@ -18,4 +19,4 @@ rm: stop
 	cd docker; docker-compose rm
 
 exec:
-	docker exec -ti $(APP_CONTAINER) zsh
+	docker exec -ti $(container) zsh
