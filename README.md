@@ -30,10 +30,16 @@ Login: **admin**, Password: **admin**. (You can change this config in you docker
 
 Add the ssh config to your container and rebuild the project
 
-     $ cp ~/.ssh/* $(pwd)/docker/php/ssh
-     $ make build
-     $ eval $(ssh-agent)  // Started the SSH agent
-     $ ssh-add            // Add your private key to it
+     cp ~/.ssh/* $(pwd)/docker/php/ssh
+     make build
+     eval $(ssh-agent)  // Started the SSH agent
+     ssh-add            // Add your private key to it
 
 To know how to generate a ssh key,
 follow this [GitHub tutorial](https://help.github.com/articles/generating-ssh-keys/).
+
+### Generate Certificate
+
+    make nginx
+    certbot certonly
+    

@@ -1,4 +1,4 @@
-.PHONY: build up start stop rm exec install
+.PHONY: build up start stop rm exec install nginx
 
 container?=php-fpm-melody
 env?=dev
@@ -24,3 +24,6 @@ rm: stop
 
 exec:
 	docker exec -ti $(container) zsh
+
+nginx:
+	docker exec -ti nginx-melody zsh
