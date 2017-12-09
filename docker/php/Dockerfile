@@ -40,6 +40,7 @@ RUN docker-php-ext-install \
 
 # Git config
 RUN git config --global core.excludesfile '~/.gitignore_global'
+RUN git config --global push.default simple
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
