@@ -18,6 +18,8 @@ Browser web site
 
     cd my_project
     php -S 0.0.0.0:8000 -t public
+    
+    http://localhost:8000
 
 #### PhpMyAdmin
 
