@@ -1,6 +1,8 @@
-.PHONY: build up start stop rm exec install nginx
+.PHONY: build up start stop rm exec generate-certificate
 
-container?=php-fpm-melody
+php-container?=php-fpm-melody
+nginx-container?=nginx-melody
+node-container?=node-melody
 env?=dev
 
 build:
@@ -8,10 +10,10 @@ build:
 	cd docker; docker-compose build
 	cd docker; docker-compose up -d
 	docker ps
-	docker exec -ti $(container) zsh
 
 up:
-	cd docker; ./up
+	cd docker; docker-compose up -d
+	docker exec -ti $(php-container) zsh
 
 start:
 	cd docker; docker-compose start
@@ -23,7 +25,7 @@ rm: stop
 	cd docker; docker-compose rm
 
 exec:
-	docker exec -ti $(container) zsh
+	docker exec -ti $(php-container) zsh
 
-nginx:
-	docker exec -ti nginx-melody zsh
+generate-certificate:
+	docker exec -ti $(nginx-container) certbot certonly

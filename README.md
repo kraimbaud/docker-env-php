@@ -12,11 +12,12 @@ After that you'll be able to build your project.
 
 Bootstrap a Symfony project
 
-    symfony new symfony-project
+    composer create-project symfony/skeleton my_project
 
 Browser web site
 
-    sf server:start 0.0.0.0:8000
+    cd my_project
+    php -S 0.0.0.0:8000 -t public
 
 #### PhpMyAdmin
 
@@ -38,8 +39,7 @@ Add the ssh config to your container and rebuild the project
 To know how to generate a ssh key,
 follow this [GitHub tutorial](https://help.github.com/articles/generating-ssh-keys/).
 
-### Generate Certificate
+### Generate SSL Certificate
 
-    make nginx
-    certbot certonly
+    make generate-certificate
     

@@ -51,10 +51,6 @@ RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-# Install the Symfony Installer
-RUN curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
-RUN chmod a+x /usr/local/bin/symfony
-
 # PHP Deployer
 RUN curl -LO http://deployer.org/deployer.phar
 RUN mv deployer.phar /usr/local/bin/dep
