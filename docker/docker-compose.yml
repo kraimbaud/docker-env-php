@@ -29,7 +29,8 @@ services:
         working_dir: /var/www/html
         volumes:
             - ./nginx/conf.d:/etc/nginx/conf.d
-            - ./nginx/letsencrypt:/etc/letsencrypt
+            - data-melody:/etc/letsencrypt
+            - data-melody:/var/log/nginx
 
     db:
         image: mysql:8
@@ -42,15 +43,8 @@ services:
             - MYSQL_DATABASE=melody
             - MYSQL_USER=admin
             - MYSQL_PASSWORD=admin
-
-    data:
-        image: debian:jessie
-        container_name: data-melody
-        working_dir: /var
         volumes:
-            - /var/lib/mysql
-            - /var/log/nginx
-        tty: yes
+            - data-melody:/var/lib/mysql
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7
@@ -69,3 +63,6 @@ services:
         working_dir: /var/www
         volumes:
             - ../app:/var/www
+
+volumes:
+    data-melody: {}
