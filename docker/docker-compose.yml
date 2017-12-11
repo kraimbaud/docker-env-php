@@ -29,8 +29,8 @@ services:
         working_dir: /var/www/html
         volumes:
             - ./nginx/conf.d:/etc/nginx/conf.d
-            - data-melody:/etc/letsencrypt
-            - data-melody:/var/log/nginx
+            - data:/etc/letsencrypt
+            - data:/var/log/nginx
 
     db:
         image: mysql:8
@@ -44,7 +44,7 @@ services:
             - MYSQL_USER=admin
             - MYSQL_PASSWORD=admin
         volumes:
-            - data-melody:/var/lib/mysql
+            - data:/var/lib/mysql
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7
@@ -65,4 +65,4 @@ services:
             - ../app:/var/www
 
 volumes:
-    data-melody: {}
+    data: {}
