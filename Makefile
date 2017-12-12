@@ -1,9 +1,9 @@
 .PHONY: build up start stop rm exec generate-certificate
 
-php-container?=php-fpm-melody
-nginx-container?=nginx-melody
-node-container?=node-melody
-env?=dev
+include docker/.env
+php-container?=php-fpm
+nginx-container?=nginx
+node-container?=node
 
 build:
 	cd docker; bash up.sh
@@ -13,7 +13,7 @@ build:
 
 up:
 	cd docker; docker-compose up -d
-	docker exec -ti $(php-container) zsh
+	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
 
 start:
 	cd docker; docker-compose start
@@ -25,7 +25,7 @@ rm: stop
 	cd docker; docker-compose rm
 
 exec:
-	docker exec -ti $(php-container) zsh
+	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
 
 generate-certificate:
-	docker exec -ti $(nginx-container) certbot certonly
+	docker exec -ti $(nginx-container)-$(PROJECT_NAME) certbot certonly

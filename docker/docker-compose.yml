@@ -3,7 +3,7 @@ version: '3'
 services:
     php-fpm:
         build: ./php
-        container_name: php-fpm-melody
+        container_name: php-fpm-${PROJECT_NAME}
         links:
             - db
         ports:
@@ -13,13 +13,13 @@ services:
             - ../app:/var/www/html
         tty: true
         env_file:
-            - ./docker.env
+            - ./.env
         entrypoint: /entrypoint.sh
 
     nginx:
         restart: always
         build: ./nginx
-        container_name: nginx-melody
+        container_name: nginx-${PROJECT_NAME}
         links:
             - php-fpm
             - node
@@ -34,13 +34,13 @@ services:
 
     db:
         image: mysql:8
-        container_name: db-melody
+        container_name: db-${PROJECT_NAME}
         ports:
             - 3306:3306
         environment:
             - MYSQL_RANDOM_ROOT_PASSWORD=true
             #- MYSQL_ROOT_PASSWORD=root
-            - MYSQL_DATABASE=melody
+            - MYSQL_DATABASE=${PROJECT_NAME}
             - MYSQL_USER=admin
             - MYSQL_PASSWORD=admin
         volumes:
@@ -48,7 +48,7 @@ services:
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7
-        container_name: phpmyadmin-melody
+        container_name: phpmyadmin-${PROJECT_NAME}
         links:
             - db
         ports:
@@ -58,7 +58,7 @@ services:
         build:
             context: ./node
             dockerfile: ./Dockerfile
-        container_name: node-melody
+        container_name: node-${PROJECT_NAME}
         tty: true
         working_dir: /var/www
         volumes:
