@@ -17,7 +17,6 @@ services:
         entrypoint: /entrypoint.sh
 
     nginx:
-        restart: always
         build: ./nginx
         container_name: nginx-${PROJECT_NAME}
         links:
