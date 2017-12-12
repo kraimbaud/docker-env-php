@@ -8,7 +8,7 @@ After that you'll be able to build your project.
 
     make build
     
-Put your personal env variable in **docker/docker.env**
+Edit env variable in **docker/.env**
 
     GIT_EMAIL=my.email@domain.name
     GIT_NAME=My Name
