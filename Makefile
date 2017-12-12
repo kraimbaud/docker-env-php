@@ -8,7 +8,7 @@ node-container?=node
 build:
 	cd docker; bash up.sh
 	cd docker; docker-compose build
-	cd docker; docker-compose up -d
+	cd docker; docker-compose up -d --force-recreate
 	docker ps
 
 up:
