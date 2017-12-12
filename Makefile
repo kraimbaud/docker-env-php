@@ -1,6 +1,6 @@
 .PHONY: build up start stop rm exec generate-certificate
 
-include docker/.env
+-include docker/.env
 php-container?=php-fpm
 nginx-container?=nginx
 node-container?=node

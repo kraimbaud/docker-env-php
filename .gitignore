@@ -8,7 +8,7 @@ docker/php/ssh
 docker/nginx/conf.d
 !docker/nginx/conf.d/default.conf
 
-docker/docker.env
+.env
 
 #Certbot
 app/certbot.log
