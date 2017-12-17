@@ -26,6 +26,14 @@ Browser web site
     
     http://localhost:8000
 
+### Configure Nginx fot prod
+Uncomment listen line and target the good directory
+
+Rebuild the image with `make build` after changing nginx conf
+    
+    listen *:80 default_server;
+    root /var/www/html/%PROJECT_NAME%/public;
+
 #### PhpMyAdmin
 
 Browser the MySQL database with PhpMyAdmin:
