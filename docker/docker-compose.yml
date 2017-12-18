@@ -45,6 +45,8 @@ services:
             - MYSQL_DATABASE=${PROJECT_NAME}
             - MYSQL_USER=admin
             - MYSQL_PASSWORD=admin
+        env_file:
+            - ./.env
         volumes:
             - data:/var/lib/mysql
 
@@ -65,6 +67,8 @@ services:
         working_dir: /var/www
         volumes:
             - ../app:/var/www
+        env_file:
+            - ./.env
 
 volumes:
     data: {}
