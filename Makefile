@@ -1,4 +1,4 @@
-.PHONY: build up start stop rm exec generate-certificate
+.PHONY: build up exec generate-certificate
 
 -include docker/.env
 php-container?=php-fpm
@@ -14,15 +14,6 @@ build:
 up:
 	cd docker; docker-compose up -d
 	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
-
-start:
-	cd docker; docker-compose start
-
-stop:
-	cd docker; docker-compose stop
-
-rm: stop
-	cd docker; docker-compose rm
 
 exec:
 	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
