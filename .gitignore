@@ -8,6 +8,7 @@ docker/nginx/conf.d
 !docker/nginx/conf.d/default.conf
 
 .env
+*.pem
 
 #Certbot
 app/certbot.log
