@@ -9,7 +9,11 @@ build:
 	cd docker; bash up.sh
 	cd docker; docker-compose build
 	cd docker; docker-compose up -d --force-recreate
-	docker ps
+#	docker exec $(app_container)-$(PROJECT_NAME) composer install -v --prefer-dist --no-suggest --no-interaction
+#	docker exec $(app_container)-$(PROJECT_NAME) php bin/console do:sc:up -f
+#	docker exec $(app_container)-$(PROJECT_NAME) php bin/console cache:clear --env=$(ENV)
+#	docker exec $(node_container)-$(PROJECT_NAME) npm install
+#	docker exec $(node_container)-$(PROJECT_NAME) ng build
 
 up:
 	cd docker; docker-compose up -d
