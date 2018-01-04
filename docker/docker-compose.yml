@@ -40,13 +40,11 @@ services:
         ports:
             - 3306:3306
         environment:
-            - MYSQL_RANDOM_ROOT_PASSWORD=true
-            #- MYSQL_ROOT_PASSWORD=root
+#            - MYSQL_RANDOM_ROOT_PASSWORD=${MYSQL_RANDOM_ROOT_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
             - MYSQL_DATABASE=${PROJECT_NAME}
-            - MYSQL_USER=admin
-            - MYSQL_PASSWORD=admin
-        env_file:
-            - ./.env
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
         volumes:
             - data:/var/lib/mysql
 
