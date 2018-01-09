@@ -7,7 +7,7 @@ services:
         links:
             - db
         ports:
-            - 8000:8000
+            - ${APP_DEV_PORT}:8000
         working_dir: /var/www/html/
         volumes:
             - ../app:/var/www/html
