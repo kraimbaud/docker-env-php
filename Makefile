@@ -8,7 +8,7 @@ node-container?=node
 build:
 	cd docker; bash up.sh
 	cd docker; docker-compose build
-	cd docker; docker-compose up -d --force-recreate
+	cd docker; docker-compose up -d
 #	docker exec $(app_container)-$(PROJECT_NAME) composer install -v --prefer-dist --no-suggest --no-interaction
 #	docker exec $(app_container)-$(PROJECT_NAME) php bin/console do:sc:up -f
 #	docker exec $(app_container)-$(PROJECT_NAME) php bin/console cache:clear --env=$(ENV)
