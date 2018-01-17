@@ -33,7 +33,7 @@ services:
             - data:/var/log/nginx
 
     db:
-        image: mysql:8
+        image: mysql:5.7
         container_name: db-${PROJECT_NAME}
         ports:
             - ${DATABASE_PORT}:3306
