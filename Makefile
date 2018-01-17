@@ -1,4 +1,4 @@
-.PHONY: build install up exec generate-certificate
+.PHONY: build install exec generate-certificate
 
 -include docker/.env
 php-container?=php-fpm
@@ -16,10 +16,6 @@ build:
 #	docker exec $(app_container)-$(PROJECT_NAME) php bin/console cache:clear --env=$(ENV)
 #	docker exec $(node_container)-$(PROJECT_NAME) npm install
 #	docker exec $(node_container)-$(PROJECT_NAME) ng build
-
-up:
-	cd docker; docker-compose up -d
-	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
 
 exec:
 	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
