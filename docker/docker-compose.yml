@@ -42,8 +42,8 @@ services:
             - MYSQL_DATABASE=${PROJECT_NAME}
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-        volumes:
-            - data:/var/lib/mysql
+       #volumes:
+            #- data:/var/lib/mysql
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7
