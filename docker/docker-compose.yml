@@ -33,7 +33,7 @@ services:
             - data:/var/log/nginx
 
     db:
-        image: mysql:5.7
+        build: ./db
         container_name: db-${PROJECT_NAME}
         ports:
             - ${DATABASE_PORT}:3306
@@ -43,7 +43,7 @@ services:
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
         volumes:
-            - data:/var/lib/mysql
+            - ./db/db-persist:/var/lib/mysql
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7

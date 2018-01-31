@@ -1,3 +1,6 @@
+.env
+*.pem
+
 app
 !app/index.php
 
@@ -7,10 +10,9 @@ docker/php/ssh
 docker/nginx/conf.d
 !docker/nginx/conf.d/default.conf
 
-.env
-*.pem
+docker/db/db-persist/
+!docker/db/db-persist/.gitkeep
 
 #Certbot
 app/certbot.log
-docker/nginx/letsencrypt
-!docker/nginx/letsencrypt/.gitkeep
+
