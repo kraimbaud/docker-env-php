@@ -26,21 +26,20 @@ Browser web site
     
     http://localhost:8000
 
-### Configure Nginx fot prod
-Uncomment listen line and target the good directory
+### Configure Nginx `/docker/nginx/conf.d/`
+Copy `default.conf`
 
-Rebuild the image with `make build` after changing nginx conf
-    
-    listen *:80 default_server;
-    root /var/www/html/%PROJECT_NAME%/public;
+`cp default.conf your_project_name.conf`
+
+Restart nginx container after modification
 
 #### PhpMyAdmin
 
 Browser the MySQL database with PhpMyAdmin:
 
-    http://localhost:8080
+    http://localhost:8888
 
-Login: **admin**, Password: **admin**. (You can change this config in you docker-compose.yml file).
+Login: **root**, Password: **root**. (You can change this config in you `.env` file).
 
 ### SSH Config
 
@@ -54,7 +53,7 @@ Add the ssh config to your container and rebuild the project
 To know how to generate a ssh key,
 follow this [GitHub tutorial](https://help.github.com/articles/generating-ssh-keys/).
 
-### Generate SSL Certificate
+### SSL Certificate
 
-    make generate-certificate
-    
+    make certificate # Generate SSL Certificate for DEV
+    make certbot     # Generate Let's Encrypt SSL Certificate for PROD
