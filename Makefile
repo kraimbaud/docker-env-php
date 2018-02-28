@@ -1,4 +1,4 @@
-.PHONY: build install exec generate-certificate
+.PHONY: build start install exec generate-certificate
 
 -include docker/.env
 php-container?=php-fpm
@@ -9,6 +9,9 @@ build:
 	cd docker; bash up.sh
 	cd docker; docker-compose build
 	cd docker; docker-compose up -d
+
+start:
+	cd docker; docker-compose start
 
 exec:
 	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
