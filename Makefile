@@ -16,6 +16,12 @@ start:
 exec:
 	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
 
+php:
+	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
+
+node:
+	docker exec -ti $(node-container)-$(PROJECT_NAME) bash
+
 # Generate Local Certificate for dev env
 certificate:
 	docker exec -ti $(nginx-container)-$(PROJECT_NAME) openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt
