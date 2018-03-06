@@ -8,7 +8,7 @@ docker/php/ssh
 !docker/php/ssh/.gitkeep
 
 docker/nginx/conf.d
-!docker/nginx/conf.d/default.conf
+!docker/nginx/conf.d/.gitkeep
 
 docker/db/db-persist/
 !docker/db/db-persist/.gitkeep
