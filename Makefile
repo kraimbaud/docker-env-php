@@ -1,4 +1,4 @@
-.PHONY: build start install exec generate-certificate
+.PHONY: build start exec php node nginx install exec certificate certbot
 
 -include docker/.env
 php-container?=php-fpm
@@ -21,6 +21,9 @@ php:
 
 node:
 	docker exec -ti $(node-container)-$(PROJECT_NAME) bash
+
+nginx:
+	docker exec -ti $(nginx-container)-$(PROJECT_NAME) zsh
 
 # Generate Local Certificate for dev env
 certificate:
