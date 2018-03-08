@@ -9,6 +9,7 @@ build:
 	cd docker; bash up.sh
 	cd docker; docker-compose build
 	cd docker; docker-compose up -d
+	docker exec -ti nginx-melody zsh
 
 start:
 	cd docker; docker-compose start
@@ -32,6 +33,11 @@ certificate:
 # Generate Let's Encrypt Certificate for prod env
 certbot:
 	docker exec -ti $(nginx-container)-$(PROJECT_NAME) certbot certonly
+
+# Renew Let's Encrypt Certificate
+certbot-renew:
+	docker exec -ti $(nginx-container)-$(PROJECT_NAME) certbot renew
+	docker restart $(nginx-container)-$(PROJECT_NAME)
 
 #install:
 #	docker exec $(php-container)-$(PROJECT_NAME) composer install -v --prefer-dist --no-suggest --no-interaction

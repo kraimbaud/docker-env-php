@@ -14,9 +14,13 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install -y \
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN sed -i -- 's/robbyrussell/sonicradish/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
 
-COPY cron/certbot /etc/cron.d/certbot
-RUN chmod 0644 /etc/cron.d/certbot
-RUN service cron start
+COPY cron/crontab /etc/crontab
+#RUN chmod 0644 /etc/cron.d/certbot
+RUN /etc/init.d/cron start
+
+# ENTRYPOINT
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod 777 /entrypoint.sh
 
 EXPOSE 80 443
 
