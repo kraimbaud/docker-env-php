@@ -35,7 +35,7 @@ certbot:
 
 # Renew Let's Encrypt Certificate
 certbot-renew:
-	docker exec -ti $(nginx-container)-$(PROJECT_NAME) certbot renew
+	docker exec $(nginx-container)-$(PROJECT_NAME) certbot renew
 	docker restart $(nginx-container)-$(PROJECT_NAME)
 
 #install:
