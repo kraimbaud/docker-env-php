@@ -31,7 +31,6 @@ services:
             - ../app:/var/www/html
             - data:/etc/letsencrypt
             - data:/var/log/nginx
-#        entrypoint: /entrypoint.sh
 
     db:
         build: ./db

@@ -9,7 +9,6 @@ build:
 	cd docker; bash up.sh
 	cd docker; docker-compose build
 	cd docker; docker-compose up -d
-	docker exec -ti nginx-melody zsh
 
 start:
 	cd docker; docker-compose start
