@@ -13,9 +13,5 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install -y \
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN sed -i -- 's/robbyrussell/sonicradish/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
 
-# ENTRYPOINT
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod 777 /entrypoint.sh
-
 EXPOSE 80 443
 
