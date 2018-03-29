@@ -38,6 +38,10 @@ RUN docker-php-ext-install \
     mcrypt \
     exif
 
+# Install APCu
+RUN pecl install apcu
+RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini
+
 # Git config
 RUN git config --global core.excludesfile '~/.gitignore_global'
 RUN git config --global push.default simple
