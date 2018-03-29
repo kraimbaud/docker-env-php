@@ -59,9 +59,9 @@ services:
             dockerfile: ./Dockerfile
         container_name: node-${PROJECT_NAME}
         tty: true
-        working_dir: /var/www
+        working_dir: /var/www/html
         volumes:
-            - ../app:/var/www
+            - ../app:/var/www/html
 
 volumes:
     data: {}
