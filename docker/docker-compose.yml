@@ -58,6 +58,8 @@ services:
             context: ./node
             dockerfile: ./Dockerfile
         container_name: node-${PROJECT_NAME}
+        ports:
+            - ${ANGULAR_PORT}:4200
         tty: true
         working_dir: /var/www/html
         volumes:
