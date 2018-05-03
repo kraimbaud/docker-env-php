@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.1-fpm
 
 # Right access
 RUN usermod -u 1000 www-data
