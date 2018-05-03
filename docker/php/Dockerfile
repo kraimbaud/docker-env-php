@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.2-fpm
 
 # Right access
 RUN usermod -u 1000 www-data
@@ -71,19 +71,6 @@ RUN mv php-cs-fixer /usr/local/bin/php-cs-fixer
 RUN curl https://phar.phpunit.de/phpunit.phar -L -o phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
-
-# Install NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash
-RUN apt-get install -y nodejs
-
-# Symbolic links for NodeJS
-RUN ln -s /usr/bin/nodejs /usr/local/bin/node
-RUN ln -s /usr/bin/npm /usr/local/bin/npm
-
-# Install npm packages
-RUN npm install -g gulp-cli
-RUN npm install -g foundation-cli
-RUN npm install -g @angular/cli
 
 # Add some config
 ADD php.ini /usr/local/etc/php/conf.d/
