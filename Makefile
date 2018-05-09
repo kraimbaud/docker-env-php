@@ -4,6 +4,7 @@
 php-container?=php-fpm
 nginx-container?=nginx
 node-container?=node
+db-container?=db
 
 build:
 	cd docker; bash up.sh
@@ -25,6 +26,9 @@ node:
 nginx:
 	docker exec -ti $(nginx-container)-$(PROJECT_NAME) zsh
 
+db:
+	docker exec -ti $(db-container)-$(PROJECT_NAME) zsh
+
 # Generate Local Certificate for dev env
 certificate:
 	docker exec -ti $(nginx-container)-$(PROJECT_NAME) openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt
@@ -37,10 +41,3 @@ certbot:
 certbot-renew:
 	docker exec $(nginx-container)-$(PROJECT_NAME) certbot renew
 	docker restart $(nginx-container)-$(PROJECT_NAME)
-
-#install:
-#	docker exec $(php-container)-$(PROJECT_NAME) composer install -v --prefer-dist --no-suggest --no-interaction
-#	docker exec $(php-container)-$(PROJECT_NAME) php bin/console do:sc:up -f
-#	docker exec $(php-container)-$(PROJECT_NAME) php bin/console cache:clear --env=$(ENV)
-#	docker exec $(node-container)-$(PROJECT_NAME) npm install
-#	docker exec $(node-container)-$(PROJECT_NAME) ng build
