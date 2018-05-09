@@ -27,7 +27,7 @@ nginx:
 	docker exec -ti $(nginx-container)-$(PROJECT_NAME) zsh
 
 db:
-	docker exec -ti $(db-container)-$(PROJECT_NAME) zsh
+	docker exec -ti $(db-container)-$(PROJECT_NAME) bash
 
 # Generate Local Certificate for dev env
 certificate:
