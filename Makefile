@@ -14,9 +14,6 @@ build:
 start:
 	cd docker; docker-compose start
 
-exec:
-	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
-
 php:
 	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
 
