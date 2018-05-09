@@ -1,4 +1,4 @@
-.PHONY: build start exec php node nginx install exec certificate certbot
+.PHONY: build start php node nginx db certificate certbot certbot-renew
 
 -include docker/.env
 php-container?=php-fpm
