@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-file=.env
+env=.env
 php_ini=php/config/php.ini
 www_conf=php/config/www.conf
 
 #############################################
-if [ ! -a $file ]; then
-    cp .env.dist $file
-    echo "$file file has been created"
+if [ ! -a $env ]; then
+    cp .env.dist $env
+    echo "$env file has been created"
 fi
 
 #############################################
