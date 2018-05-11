@@ -74,6 +74,7 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 
 # Add some config
 ADD config/php.ini /usr/local/etc/php/conf.d/
+ADD config/www.conf /usr/local/etc/php-fpm.d/
 ADD vim/.vimrc /root
 ADD git/.gitignore_global /root
 
