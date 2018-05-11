@@ -73,7 +73,7 @@ RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
 # Add some config
-ADD php.ini /usr/local/etc/php/conf.d/
+ADD config/php.ini /usr/local/etc/php/conf.d/
 ADD vim/.vimrc /root
 ADD git/.gitignore_global /root
 

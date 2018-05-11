@@ -6,6 +6,7 @@ app
 
 docker/php/ssh
 !docker/php/ssh/.gitkeep
+!docker/php/config/.gitkeep
 
 docker/nginx/conf.d
 !docker/nginx/conf.d/.gitkeep
