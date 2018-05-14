@@ -5,7 +5,7 @@ php_ini=php/config/php.ini
 www_conf=php/config/www.conf
 
 #############################################
-if [ ! -a $env ]; then
+if [ ! -f $env ]; then
     cp .env.dist $env
     echo "$env file has been created"
 fi
