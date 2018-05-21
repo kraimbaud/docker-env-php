@@ -65,5 +65,14 @@ services:
         volumes:
             - ../app:/var/www/html
 
+    portainer:
+        image: portainer/portainer
+        command: -H unix:///var/run/docker.sock
+        ports:
+            - 9000:9000
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - data:/data
+
 volumes:
     data: {}
