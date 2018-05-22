@@ -1,4 +1,4 @@
-.PHONY: build start php node nginx db certificate certbot certbot-renew
+.PHONY: build build-prod start php node nginx db certificate certbot certbot-renew
 
 -include docker/.env
 php-container?=php-fpm
@@ -7,6 +7,11 @@ node-container?=node
 db-container?=db
 
 build:
+	cd docker; bash up.sh
+	cd docker; docker-compose build
+	cd docker; docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+
+build-prod:
 	cd docker; bash up.sh
 	cd docker; docker-compose build
 	cd docker; docker-compose up -d
