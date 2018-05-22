@@ -6,8 +6,9 @@ A Docker PHP Env
 [Install Docker](http://docs.docker.com/engine/installation/) first to use this environment.
 After that you'll be able to build your project.
 
-    sudo make build
-    
+    sudo make build      # For DEV
+    sudo make build-prod # For PROD
+
 Edit env variable in **docker/.env**
 
     GIT_EMAIL=my.email@domain.name
@@ -23,7 +24,7 @@ Browser web site
 
     cd my_project
     php -S 0.0.0.0:8000 -t public
-    
+
     http://localhost:8000
 
 ### Configure Nginx `/docker/nginx/conf.d/`
