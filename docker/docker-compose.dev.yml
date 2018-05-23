@@ -30,3 +30,6 @@ services:
             - data:/var/run/docker.sock
             - data:/data
 
+    rancher:
+        image: rancher/rancher
+        container_name: rancher-${PROJECT_NAME}
