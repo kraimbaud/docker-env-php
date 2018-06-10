@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.2-fpm
 
 # Right access
 RUN usermod -u 1000 www-data
@@ -15,7 +15,6 @@ RUN apt-get update && apt-get install -y \
     wkhtmltopdf \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
-    libmcrypt-dev \
     libpng-dev \
     httpie
 
@@ -35,7 +34,6 @@ RUN docker-php-ext-install \
     pcntl \
     gd \
     iconv \
-    mcrypt \
     exif
 
 # Install APCu
