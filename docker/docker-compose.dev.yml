@@ -26,9 +26,9 @@ services:
         command: -H unix:///var/run/docker.sock
         ports:
             - ${PORTAINER_PORT}:9000
-        volumes:
-            - data:/var/run/docker.sock
-            - data:/data
+#        volumes:
+#            - data:/var/run/docker.sock
+#            - data:/data
 
     rancher:
         image: rancher/rancher
