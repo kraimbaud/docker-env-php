@@ -15,7 +15,7 @@ build-prod:
 	cd docker; docker-compose up -d --build --remove-orphans
 
 start:
-	cd docker; docker-compose -f docker-compose.dev.yml start
+	cd docker; docker-compose -f docker-compose.yml -f docker-compose.dev.yml start
 
 start-prod:
 	cd docker; docker-compose start
