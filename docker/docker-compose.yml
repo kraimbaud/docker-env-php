@@ -2,7 +2,9 @@ version: '3'
 
 services:
     php-fpm:
-        build: ./php
+        build:
+            context: .
+            dockerfile: Dockerfile-php
         container_name: php-fpm-${PROJECT_NAME}
         ports:
             - ${APP_DEV_PORT}:8000
@@ -15,7 +17,9 @@ services:
         entrypoint: /entrypoint.sh
 
     nginx:
-        build: ./nginx
+        build:
+            context: .
+            dockerfile: Dockerfile-nginx
         container_name: nginx-${PROJECT_NAME}
         links:
             - php-fpm
@@ -32,8 +36,8 @@ services:
 
     node:
         build:
-            context: ./node
-            dockerfile: ./Dockerfile
+            context: .
+            dockerfile: Dockerfile-node
         container_name: node-${PROJECT_NAME}
         ports:
             - ${ANGULAR_PORT}:4200
@@ -41,6 +45,9 @@ services:
         working_dir: /var/www/html
         volumes:
             - ../app:/var/www/html
+        env_file:
+        - ./.env
+        entrypoint: /entrypoint.sh
 
 volumes:
     data: {}

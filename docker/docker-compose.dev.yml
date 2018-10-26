@@ -2,7 +2,9 @@ version: '3'
 
 services:
     db:
-        build: ./db
+        build:
+            context: .
+            dockerfile: Dockerfile-db
         container_name: db-${PROJECT_NAME}
         ports:
             - ${DATABASE_PORT}:3306

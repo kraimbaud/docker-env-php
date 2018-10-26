@@ -4,8 +4,9 @@
 app
 !app/index.php
 
-docker/php/ssh
-!docker/php/ssh/.gitkeep
+docker/_config/ssh
+!docker/_config/ssh/.gitkeep
+
 docker/php/config
 !docker/php/config/.gitkeep
 

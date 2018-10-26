@@ -14,4 +14,3 @@ RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/t
 RUN sed -i -- 's/robbyrussell/sonicradish/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
 
 EXPOSE 80 443
-

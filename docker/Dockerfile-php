@@ -71,16 +71,16 @@ RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
 # Add some config
-ADD config/php.ini /usr/local/etc/php/conf.d/
-ADD config/www.conf /usr/local/etc/php-fpm.d/
-ADD vim/.vimrc /root
-ADD git/.gitignore_global /root
+ADD php/config/php.ini /usr/local/etc/php/conf.d/
+ADD php/config/www.conf /usr/local/etc/php-fpm.d/
+ADD _config/vim/.vimrc /root
+ADD _config/git/.gitignore_global /root
 
 # SSh Config
-ADD ssh /root/.ssh
+ADD _config/ssh /root/.ssh
 RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
 RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
 
 # ENTRYPOINT
-ADD entrypoint.sh /entrypoint.sh
+ADD php/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh

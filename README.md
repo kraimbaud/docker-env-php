@@ -46,7 +46,7 @@ Login: **root**, Password: **root**. (You can change this config in you `.env` f
 
 Add the ssh config to your container and rebuild the project
 
-     cp ~/.ssh/* $(pwd)/docker/php/ssh
+     cp ~/.ssh/* $(pwd)/docker/_config/ssh
      sudo make build
      eval $(ssh-agent)  // Started the SSH agent
      ssh-add            // Add your private key to it

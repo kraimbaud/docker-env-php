@@ -1,0 +1,42 @@
+FROM node:8.9.2
+
+RUN apt-get update && apt-get install -y \
+    npm \
+    apt-transport-https \
+    zsh
+
+# Install Yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y yarn
+
+# Instal Oh my Zsh
+RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+RUN sed -i -- 's/robbyrussell/kafeitu/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+
+RUN npm install -g @angular/cli
+RUN npm install -g foundation-cli
+RUN npm install -g bootstrap-cli
+RUN npm install -g bower
+
+# Git config
+RUN git config --global core.excludesfile '~/.gitignore_global'
+RUN git config --global push.default simple
+
+# Add some config
+ADD _config/vim/.vimrc /root
+ADD _config/git/.gitignore_global /root
+
+# SSh Config
+ADD _config/ssh /root/.ssh
+RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
+RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
+
+#USER node
+#RUN mkdir /home/node/.npm-global
+#ENV PATH=/home/node/.npm-global/bin:$PATH
+#ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+
+# ENTRYPOINT
+ADD node/entrypoint.sh /entrypoint.sh
+RUN chmod 777 /entrypoint.sh
