@@ -24,7 +24,7 @@ php:
 	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
 
 node:
-	docker exec -ti $(node-container)-$(PROJECT_NAME) bash
+	docker exec -ti $(node-container)-$(PROJECT_NAME) zsh
 
 nginx:
 	docker exec -ti $(nginx-container)-$(PROJECT_NAME) zsh
