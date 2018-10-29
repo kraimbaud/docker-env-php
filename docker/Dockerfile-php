@@ -16,9 +16,7 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
-    httpie \
-    apt-transport-https \
-    gnupg
+    httpie 
 
 RUN docker-php-ext-configure \
     gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
@@ -71,11 +69,6 @@ RUN mv php-cs-fixer /usr/local/bin/php-cs-fixer
 RUN curl https://phar.phpunit.de/phpunit.phar -L -o phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
-
-# Install Yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -y yarn
 
 # Add some config
 ADD php/config/php.ini /usr/local/etc/php/conf.d/
