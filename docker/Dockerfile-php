@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
-    httpie
+    httpie \
+    sudo
 
 RUN docker-php-ext-configure \
     gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
@@ -84,3 +85,8 @@ RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
 # ENTRYPOINT
 ADD php/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
+
+# Add user
+RUN useradd -ms /bin/zsh admin
+USER admin
+WORKDIR /home/admin
