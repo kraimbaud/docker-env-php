@@ -13,10 +13,6 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -y yarn
 
-# Instal Oh my Zsh
-RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-RUN sed -i -- 's/robbyrussell/kafeitu/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
-
 RUN npm install -g @angular/cli
 RUN npm install -g @vue/cli-service-global
 RUN npm install -g create-react-app
@@ -37,16 +33,16 @@ ADD _config/ssh /root/.ssh
 RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
 RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
 
-#USER node
-#RUN mkdir /home/node/.npm-global
-#ENV PATH=/home/node/.npm-global/bin:$PATH
-#ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
-
 # ENTRYPOINT
 ADD node/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
 # Add user
 RUN useradd -ms /bin/zsh admin
-USER admin
 WORKDIR /home/admin
+USER admin
+
+# Instal Oh my Zsh
+RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+RUN sed -i -- 's/robbyrussell/sonicradish/g' /home/admin/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+

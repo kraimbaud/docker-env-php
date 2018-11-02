@@ -45,11 +45,6 @@ RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini
 RUN git config --global core.excludesfile '~/.gitignore_global'
 RUN git config --global push.default simple
 
-# Instal Oh my Zsh
-RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-RUN sed -i -- 's/robbyrussell/wezm+/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
-RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' /root/.zshrc # Add symfony2 plugin
-
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
@@ -88,5 +83,11 @@ RUN chmod 777 /entrypoint.sh
 
 # Add user
 RUN useradd -ms /bin/zsh admin
-USER admin
 WORKDIR /home/admin
+USER admin
+
+# Instal Oh my Zsh
+RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+RUN sed -i -- 's/robbyrussell/wezm+/g' /home/admin/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' /home/admin/.zshrc # Add symfony2 plugin
+
