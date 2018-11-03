@@ -6,8 +6,7 @@ A Docker PHP Env
 [Install Docker](http://docs.docker.com/engine/installation/) first to use this environment.
 After that you'll be able to build your project.
 
-    sudo make build      # For DEV
-    sudo make build-prod # For PROD
+    sudo make build
 
 Edit env variable in **docker/.env**
 

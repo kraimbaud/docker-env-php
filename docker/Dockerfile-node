@@ -38,11 +38,12 @@ ADD node/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
 # Add user
-RUN useradd -ms /bin/zsh admin
-WORKDIR /home/admin
-USER admin
+ARG user_name=admin
+RUN useradd -ms /bin/zsh ${user_name}
+WORKDIR /home/${user_name}
+USER ${user_name}
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-RUN sed -i -- 's/robbyrussell/sonicradish/g' /home/admin/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+RUN sed -i -- 's/robbyrussell/sonicradish/g' /home/${user_name}/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
 

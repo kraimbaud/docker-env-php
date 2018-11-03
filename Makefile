@@ -8,11 +8,13 @@ db-container?=db
 
 build:
 	cd docker; bash up.sh
-	cd docker; docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+	cd docker; docker-compose build --build-arg user_name=$(USER)
+	cd docker; docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --force-recreate
 
 build-prod:
 	cd docker; bash up.sh
-	cd docker; docker-compose up -d --build --remove-orphans
+	cd docker; docker-compose build --build-arg user_name=$(USER)
+	cd docker; docker-compose up -d --remove-orphans --force-recreate
 
 start:
 	cd docker; docker-compose -f docker-compose.yml -f docker-compose.dev.yml start

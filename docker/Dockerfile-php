@@ -1,8 +1,5 @@
 FROM php:7.2-fpm
 
-# Right access
-RUN usermod -u 1000 www-data
-
 # Install Packages
 RUN apt-get update && apt-get install -y \
     vim \
@@ -82,12 +79,15 @@ ADD php/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
 # Add user
-RUN useradd -ms /bin/zsh admin
-WORKDIR /home/admin
-USER admin
+ARG user_name=admin
+RUN useradd -ms /bin/zsh ${user_name}
+WORKDIR /home/${user_name}
+USER ${user_name}
+
+# Right access
+RUN usermod -u 1000 ${user_name}
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-RUN sed -i -- 's/robbyrussell/wezm+/g' /home/admin/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
-RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' /home/admin/.zshrc # Add symfony2 plugin
-
+RUN sed -i -- 's/robbyrussell/wezm+/g' /home/${user_name}/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' /home/${user_name}/.zshrc # Add symfony2 plugin
