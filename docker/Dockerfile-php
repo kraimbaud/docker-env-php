@@ -38,10 +38,6 @@ RUN docker-php-ext-install \
 RUN pecl install apcu
 RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini
 
-# Git config
-RUN git config --global core.excludesfile '~/.gitignore_global'
-RUN git config --global push.default simple
-
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
@@ -63,17 +59,6 @@ RUN curl https://phar.phpunit.de/phpunit.phar -L -o phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
-# Add some config
-ADD php/config/php.ini /usr/local/etc/php/conf.d/
-ADD php/config/www.conf /usr/local/etc/php-fpm.d/
-ADD _config/vim/.vimrc /root
-ADD _config/git/.gitignore_global /root
-
-# SSh Config
-ADD _config/ssh /root/.ssh
-RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
-RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
-
 # ENTRYPOINT
 ADD php/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
@@ -86,6 +71,22 @@ USER ${user_name}
 
 # Right access
 RUN usermod -u 1000 ${user_name}
+
+
+# Add some config
+ADD php/config/php.ini /usr/local/etc/php/conf.d/
+ADD php/config/www.conf /usr/local/etc/php-fpm.d/
+ADD _config/vim/.vimrc ~/
+
+# SSh Config
+ADD _config/ssh ~/.ssh
+RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
+RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
+
+# Git config
+ADD _config/git/.gitignore_global ~/
+RUN git config --global core.excludesfile '~/.gitignore_global'
+RUN git config --global push.default simple
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
