@@ -67,6 +67,11 @@ RUN chmod 777 /entrypoint.sh
 ARG user_name=admin
 RUN useradd -ms /bin/zsh ${user_name}
 WORKDIR /home/${user_name}
+
+# SSh Config
+ADD _config/ssh /home/${user_name}/.ssh
+RUN chown ${user_name} -R /home/${user_name}/.ssh
+
 USER ${user_name}
 
 # Right access
@@ -76,11 +81,6 @@ RUN usermod -u 1000 ${user_name}
 ADD php/config/php.ini /usr/local/etc/php/conf.d/
 ADD php/config/www.conf /usr/local/etc/php-fpm.d/
 ADD _config/vim/.vimrc /home/${user_name}/.vimrc
-
-# SSh Config
-ADD _config/ssh ~/.ssh
-RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
-RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
 
 # Git config
 ADD _config/git/.gitignore_global /home/${user_name}/.gitignore_global
