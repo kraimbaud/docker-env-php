@@ -72,11 +72,10 @@ USER ${user_name}
 # Right access
 RUN usermod -u 1000 ${user_name}
 
-
 # Add some config
 ADD php/config/php.ini /usr/local/etc/php/conf.d/
 ADD php/config/www.conf /usr/local/etc/php-fpm.d/
-ADD _config/vim/.vimrc ~/
+ADD _config/vim/.vimrc /home/${user_name}/.vimrc
 
 # SSh Config
 ADD _config/ssh ~/.ssh
@@ -84,7 +83,7 @@ RUN if [ -f ~/.ssh/id_rsa ]; then chmod 600 ~/.ssh/id_rsa; fi
 RUN if [ -f ~/.ssh/id_rsa.pub ]; then chmod 600 ~/.ssh/id_rsa.pub; fi
 
 # Git config
-ADD _config/git/.gitignore_global ~/
+ADD _config/git/.gitignore_global /home/${user_name}/.gitignore_global
 RUN git config --global core.excludesfile '~/.gitignore_global'
 RUN git config --global push.default simple
 

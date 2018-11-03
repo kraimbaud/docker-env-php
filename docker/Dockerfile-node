@@ -31,11 +31,10 @@ WORKDIR /home/${user_name}
 USER ${user_name}
 
 # Add some config
-ADD _config/vim/.vimrc ~/
-ADD _config/git/.gitignore_global ~/
+ADD _config/vim/.vimrc /home/${user_name}/.vimrc
 
 # Git config
-ADD _config/git/.gitignore_global ~/
+ADD _config/git/.gitignore_global /home/${user_name}/.gitignore_global
 RUN git config --global core.excludesfile '~/.gitignore_global'
 RUN git config --global push.default simple
 
