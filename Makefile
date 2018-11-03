@@ -9,17 +9,9 @@ db-container?=db
 build:
 	cd docker; bash up.sh
 	cd docker; docker-compose build --build-arg user_name=$(USER)
-	cd docker; docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --force-recreate
-
-build-prod:
-	cd docker; bash up.sh
-	cd docker; docker-compose build --build-arg user_name=$(USER)
-	cd docker; docker-compose up -d --remove-orphans --force-recreate
+	cd docker; docker-compose up -d --force-recreate
 
 start:
-	cd docker; docker-compose -f docker-compose.yml -f docker-compose.dev.yml start
-
-start-prod:
 	cd docker; docker-compose start
 
 php:

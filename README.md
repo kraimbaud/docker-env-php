@@ -9,7 +9,9 @@ After that you'll be able to build your project.
     sudo make build
 
 Edit env variable in **docker/.env**
-
+    PROJECT_NAME=melody
+    ENV=dev
+    USER=admin # Important, Change it. echo $USERNAME 
     GIT_EMAIL=my.email@domain.name
     GIT_NAME=My Name
 
