@@ -24,26 +24,18 @@ RUN npm install -g bower
 ADD node/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
-# Add user
-ARG user_name=admin
-RUN useradd -ms /bin/zsh ${user_name}
-WORKDIR /home/${user_name}
-
 # SSh Config
-ADD _config/ssh /home/${user_name}/.ssh
-RUN chown ${user_name} -R /home/${user_name}/.ssh
-
-USER ${user_name}
+ADD _config/ssh ~/.ssh
 
 # Add some config
-ADD _config/vim/.vimrc /home/${user_name}/.vimrc
+ADD _config/vim/.vimrc ~/.vimrc
 
 # Git config
-ADD _config/git/.gitignore_global /home/${user_name}/.gitignore_global
+ADD _config/git/.gitignore_global ~/.gitignore_global
 RUN git config --global core.excludesfile '~/.gitignore_global'
 RUN git config --global push.default simple
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-RUN sed -i -- 's/robbyrussell/sonicradish/g' /home/${user_name}/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+RUN sed -i -- 's/robbyrussell/sonicradish/g' ~/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
 

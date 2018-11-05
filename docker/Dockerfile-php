@@ -63,31 +63,23 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 ADD php/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
-# Add user
-ARG user_name=admin
-RUN useradd -ms /bin/zsh ${user_name}
-WORKDIR /home/${user_name}
-
 # SSh Config
-ADD _config/ssh /home/${user_name}/.ssh
-RUN chown ${user_name} -R /home/${user_name}/.ssh
-
-USER ${user_name}
+ADD _config/ssh ~/.ssh
 
 # Right access
-RUN usermod -u 1000 ${user_name}
+RUN usermod -u 1000 www-data
 
 # Add some config
 ADD php/config/php.ini /usr/local/etc/php/conf.d/
 ADD php/config/www.conf /usr/local/etc/php-fpm.d/
-ADD _config/vim/.vimrc /home/${user_name}/.vimrc
+ADD _config/vim/.vimrc ~/.vimrc
 
 # Git config
-ADD _config/git/.gitignore_global /home/${user_name}/.gitignore_global
+ADD _config/git/.gitignore_global ~/.gitignore_global
 RUN git config --global core.excludesfile '~/.gitignore_global'
 RUN git config --global push.default simple
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-RUN sed -i -- 's/robbyrussell/wezm+/g' /home/${user_name}/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
-RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' /home/${user_name}/.zshrc # Add symfony2 plugin
+RUN sed -i -- 's/robbyrussell/wezm+/g' ~/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' ~/.zshrc # Add symfony2 plugin
