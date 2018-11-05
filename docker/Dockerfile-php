@@ -64,7 +64,7 @@ ADD php/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
 # SSh Config
-ADD _config/ssh ~/.ssh
+ADD _config/ssh /root/.ssh
 
 # Right access
 RUN usermod -u 1000 www-data
@@ -72,14 +72,14 @@ RUN usermod -u 1000 www-data
 # Add some config
 ADD php/config/php.ini /usr/local/etc/php/conf.d/
 ADD php/config/www.conf /usr/local/etc/php-fpm.d/
-ADD _config/vim/.vimrc ~/.vimrc
+ADD _config/vim/.vimrc /root/.vimrc
 
 # Git config
-ADD _config/git/.gitignore_global ~/.gitignore_global
-RUN git config --global core.excludesfile '~/.gitignore_global'
+ADD _config/git/.gitignore_global /root/.gitignore_global
+RUN git config --global core.excludesfile '/root/.gitignore_global'
 RUN git config --global push.default simple
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-RUN sed -i -- 's/robbyrussell/wezm+/g' ~/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
-RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' ~/.zshrc # Add symfony2 plugin
+RUN sed -i -- 's/robbyrussell/wezm+/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' /root/.zshrc # Add symfony2 plugin

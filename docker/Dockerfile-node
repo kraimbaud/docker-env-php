@@ -25,17 +25,17 @@ ADD node/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
 # SSh Config
-ADD _config/ssh ~/.ssh
+ADD _config/ssh /root/.ssh
 
 # Add some config
-ADD _config/vim/.vimrc ~/.vimrc
+ADD _config/vim/.vimrc /root/.vimrc
 
 # Git config
-ADD _config/git/.gitignore_global ~/.gitignore_global
-RUN git config --global core.excludesfile '~/.gitignore_global'
+ADD _config/git/.gitignore_global /root/.gitignore_global
+RUN git config --global core.excludesfile '/root/.gitignore_global'
 RUN git config --global push.default simple
 
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-RUN sed -i -- 's/robbyrussell/sonicradish/g' ~/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
+RUN sed -i -- 's/robbyrussell/sonicradish/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
 
