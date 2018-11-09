@@ -1,4 +1,4 @@
-FROM node:8.9.2
+FROM node:10.13.0
 
 RUN apt-get update && apt-get install -y \
     vim \
@@ -19,6 +19,7 @@ RUN npm install -g create-react-app
 RUN npm install -g foundation-cli
 RUN npm install -g bootstrap-cli
 RUN npm install -g bower
+RUN npm install -g redoc
 
 # ENTRYPOINT
 ADD node/entrypoint.sh /entrypoint.sh
