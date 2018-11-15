@@ -13,9 +13,6 @@ docker/php/config
 docker/nginx/conf.d
 !docker/nginx/conf.d/.gitkeep
 
-docker/db/db-persist/
-!docker/db/db-persist/.gitkeep
-
 #Certbot
 app/certbot.log
 

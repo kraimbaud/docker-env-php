@@ -31,8 +31,8 @@ services:
         volumes:
             - ./nginx/conf.d:/etc/nginx/conf.d
             - ../app:/var/www/html
-            - data:/etc/letsencrypt
-            - data:/var/log/nginx
+            - data-volume:/etc/letsencrypt
+            - data-volume:/var/log/nginx
 
     node:
         build:
@@ -50,17 +50,18 @@ services:
         entrypoint: /entrypoint.sh
     
     db:
-        image: mysql:8
+        image: mysql:8.0.13
         container_name: db-${PROJECT_NAME}
         ports:
             - ${DATABASE_PORT}:3306
+        command: --default-authentication-plugin=mysql_native_password
         environment:
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
             - MYSQL_DATABASE=${PROJECT_NAME}
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
         volumes:
-            - ./db/db-persist:/var/lib/mysql
+            - data-volume:/var/lib/mysql
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7
@@ -75,12 +76,12 @@ services:
         ports:
             - ${PORTAINER_PORT}:9000
 #        volumes:
-#            - data:/var/run/docker.sock
-#            - data:/data
+#            - data-volume:/var/run/docker.sock
+#            - data-volume:/data
 
     rancher:
         image: rancher/rancher
         container_name: rancher-${PROJECT_NAME}
         
 volumes:
-    data: {}
+    data-volume: {}
