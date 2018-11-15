@@ -75,13 +75,16 @@ services:
         command: -H unix:///var/run/docker.sock
         ports:
             - ${PORTAINER_PORT}:9000
-#        volumes:
-#            - data-volume:/var/run/docker.sock
-#            - data-volume:/data
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - portainer_data:/data
 
     rancher:
         image: rancher/rancher
         container_name: rancher-${PROJECT_NAME}
+        ports:
+            - ${RANCHER_PORT}:443
         
 volumes:
     data-volume: {}
+    portainer_data: {}
