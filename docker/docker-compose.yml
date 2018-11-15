@@ -50,9 +50,7 @@ services:
         entrypoint: /entrypoint.sh
     
     db:
-        build:
-            context: .
-            dockerfile: Dockerfile-db
+        image: mysql:8
         container_name: db-${PROJECT_NAME}
         ports:
             - ${DATABASE_PORT}:3306
