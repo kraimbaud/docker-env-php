@@ -84,7 +84,16 @@ services:
         container_name: rancher-${PROJECT_NAME}
         ports:
             - ${RANCHER_PORT}:443
-        
+
+    traefik:
+        image: traefik:1.7.4
+        container_name: traefik-${PROJECT_NAME}
+        ports:
+            - ${TRAEFIK_PORT}:80
+            - ${TRAEFIK_DASHBOARD_PORT}:8080
+        volumes:
+            - ./traefik/traefik.toml:/etc/traefik/traefik.toml
+
 volumes:
     data-volume: {}
     portainer_data: {}
