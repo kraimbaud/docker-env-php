@@ -1,12 +1,12 @@
-A Docker PHP Env
-================
+Your new Personal Docker Env
+============================
 
 ### Install and Run the environment
 
 [Install Docker](http://docs.docker.com/engine/installation/) first to use this environment.
 After that you'll be able to build your project.
 
-    sudo make build
+    make build
 
 Edit env variable in **docker/.env**
     PROJECT_NAME=melody
@@ -15,18 +15,17 @@ Edit env variable in **docker/.env**
     GIT_EMAIL=my.email@domain.name
     GIT_NAME=My Name
 
-### Bootstrap a project
+### Make some php
 
-Bootstrap a Symfony project
+Enter into the php docker container
 
-    composer create-project symfony/skeleton my_project
+    make php
+    
+### Make some node
 
-Browser web site
+Enter into the node docker container
 
-    cd my_project
-    php -S 0.0.0.0:8000 -t public
-
-    http://localhost:8000
+    make node
 
 ### Configure Nginx `/docker/nginx/conf.d/`
 Copy `default.conf`
