@@ -16,17 +16,13 @@ Edit env variable in **docker/.env**
     GIT_EMAIL=my.email@domain.name
     GIT_NAME=My Name
 
-### Make some php
+### Make some PHP
 
-Enter into the php docker container
-
-    make php
+    make php # Enter into the PHP docker container
     
-### Make some node
+### Make some Node
 
-Enter into the node docker container
-
-    make node
+    make node # Enter into the Node docker container
 
 ### Configure Nginx `/docker/nginx/conf.d/`
 Copy `default.conf`
