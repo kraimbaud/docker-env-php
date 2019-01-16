@@ -59,6 +59,10 @@ RUN curl https://phar.phpunit.de/phpunit.phar -L -o phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
+# Symfony
+RUN curl -sS https://get.symfony.com/cli/installer | bash
+RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+
 # ENTRYPOINT
 ADD php/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
