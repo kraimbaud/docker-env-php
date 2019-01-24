@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libpng-dev \
     httpie \
-    sudo
+    sudo \
+    librabbitmq-dev \
+    libssh-dev
 
 RUN docker-php-ext-configure \
     gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
@@ -32,7 +34,11 @@ RUN docker-php-ext-install \
     pcntl \
     gd \
     iconv \
-    exif
+    exif \
+    bcmath \
+    sockets
+
+RUN pecl install amqp && docker-php-ext-enable amqp
 
 # Install APCu
 RUN pecl install apcu
