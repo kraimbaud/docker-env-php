@@ -48,7 +48,7 @@ services:
         env_file:
         - ./.env
         entrypoint: /entrypoint.sh
-    
+
     db:
         image: mysql:8.0.13
         container_name: db-${PROJECT_NAME}
@@ -93,6 +93,10 @@ services:
             - ${TRAEFIK_DASHBOARD_PORT}:8080
         volumes:
             - ./traefik/traefik.toml:/etc/traefik/traefik.toml
+
+    rabbitmq:
+        image: rabbitmq:3.7.8
+        container_name: rabbitmq-${PROJECT_NAME}
 
 volumes:
     data-volume: {}
