@@ -1,9 +1,8 @@
-FROM node:10.13.0
+FROM node:10.15.1
 
 RUN apt-get update && apt-get install -y \
     vim \
     nano \
-    npm \
     apt-transport-https \
     zsh \
     sudo
@@ -38,4 +37,3 @@ RUN git config --global push.default simple
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN sed -i -- 's/robbyrussell/sonicradish/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
-
