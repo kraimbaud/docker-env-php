@@ -8,7 +8,7 @@ db-container?=db
 
 build:
 	cd docker; bash up.sh
-	cd docker; docker-compose build --build-arg user_name=$(USER)
+	cd docker; docker-compose build
 	cd docker; docker-compose up -d --force-recreate
 
 start:
