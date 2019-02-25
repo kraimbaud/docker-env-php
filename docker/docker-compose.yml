@@ -30,6 +30,8 @@ services:
         entrypoint: /entrypoint.sh
         networks:
             - traefik
+        labels:
+            - traefik.enable=true
 
     nginx:
         build:
@@ -50,6 +52,8 @@ services:
             - data-volume:/var/log/nginx
         networks:
             - traefik
+        labels:
+            - traefik.enable=true
 
     node:
         build:
@@ -67,6 +71,8 @@ services:
         entrypoint: /entrypoint.sh
         networks:
             - traefik
+        labels:
+            - traefik.enable=true
 
     db:
         image: mysql:8.0.13
@@ -83,6 +89,8 @@ services:
             - data-volume:/var/lib/mysql
         networks:
             - traefik
+        labels:
+            - traefik.enable=true
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7
@@ -91,6 +99,8 @@ services:
             - 80
         networks:
             - traefik
+        labels:
+            - traefik.enable=true
 
 #    portainer:
 #        image: portainer/portainer
