@@ -4,6 +4,12 @@
 # Enable Docker Provider.
 [docker]
 
+# Docker server endpoint. Can be a tcp or a unix socket endpoint.
+#
+# Required
+#
+endpoint = "unix:///var/run/docker.sock"
+
 # Default base domain used for the frontend rules.
 # Can be overridden by setting the "traefik.domain" label on a container.
 #
