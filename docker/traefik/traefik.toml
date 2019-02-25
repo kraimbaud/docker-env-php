@@ -39,7 +39,7 @@ watch = true
 # Optional
 # Default: true
 #
-exposedByDefault = true
+exposedByDefault = false
 
 # Use the IP address from the binded port instead of the inner network one.
 #
