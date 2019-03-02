@@ -24,6 +24,12 @@ Edit env variable in **docker/.env**
 
     make node # Enter into the Node docker container
 
+### Config hosts file
+
+Replace ${PROJECT_NAME} with your project name in your .env file
+ 
+    127.0.0.1 traefik.${PROJECT_NAME}.local php.${PROJECT_NAME}.local node.${PROJECT_NAME}.local db.${PROJECT_NAME}.local phpmyadmin.${PROJECT_NAME}.local portainer.${PROJECT_NAME}.local
+
 ### Configure Nginx `/docker/nginx/conf.d/`
 Copy `default.conf`
 
