@@ -11,8 +11,6 @@ services:
         volumes:
             - ./traefik/traefik.toml:/etc/traefik/traefik.toml
             - /var/run/docker.sock:/var/run/docker.sock
-        networks:
-            - webgateway
 
     php-fpm:
         build:
@@ -28,10 +26,9 @@ services:
         env_file:
             - ./.env
         entrypoint: /entrypoint.sh
-        networks:
-            - traefik
         labels:
             - traefik.enable=true
+            - traefik.frontend.rule=Host:php.${PROJECT_NAME}.local
 
     nginx:
         build:
@@ -50,10 +47,9 @@ services:
             - ../app:/var/www/html
             - data-volume:/etc/letsencrypt
             - data-volume:/var/log/nginx
-        networks:
-            - traefik
         labels:
             - traefik.enable=true
+            - traefik.frontend.rule=Host:www.event.local
 
     node:
         build:
@@ -69,10 +65,9 @@ services:
         env_file:
         - ./.env
         entrypoint: /entrypoint.sh
-        networks:
-            - traefik
         labels:
             - traefik.enable=true
+            - traefik.frontend.rule=Host:node.${PROJECT_NAME}.local
 
     db:
         image: mysql:8.0.13
@@ -87,38 +82,32 @@ services:
             - MYSQL_PASSWORD=admin
         volumes:
             - data-volume:/var/lib/mysql
-        networks:
-            - traefik
         labels:
             - traefik.enable=true
+            - traefik.frontend.rule=Host:db.${PROJECT_NAME}.local
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7
         container_name: phpmyadmin-${PROJECT_NAME}
         ports:
             - 80
-        networks:
-            - traefik
         labels:
             - traefik.enable=true
+            - traefik.frontend.rule=Host:phpmyadmin.${PROJECT_NAME}.local
 
-#    portainer:
-#        image: portainer/portainer
-#        container_name: portainer-${PROJECT_NAME}
-#        command: -H unix:///var/run/docker.sock
-#        ports:
-#            - 9000
-#        volumes:
-#            - /var/run/docker.sock:/var/run/docker.sock
-#            - portainer_data:/data
-
-networks:
-    webgateway:
-        driver: bridge
-    traefik:
-        external:
-            name: traefik_webgateway
+    portainer:
+        image: portainer/portainer
+        container_name: portainer-${PROJECT_NAME}
+        command: -H unix:///var/run/docker.sock
+        ports:
+            - 9000
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - portainer_data:/data
+        labels:
+            - traefik.enable=true
+            - traefik.frontend.rule=Host:portainer.${PROJECT_NAME}.local
 
 volumes:
     data-volume: {}
-#    portainer_data: {}
+    portainer_data: {}
