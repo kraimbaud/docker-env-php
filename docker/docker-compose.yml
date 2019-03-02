@@ -12,7 +12,7 @@ services:
             - ./traefik/traefik.toml:/etc/traefik/traefik.toml
             - /var/run/docker.sock:/var/run/docker.sock
         labels:
-            - traefik.frontend.rule=Host:traefik.${PROJECT_NAME}.local
+            - traefik.frontend.rule=Host:traefik.${PROJECT_NAME}
 
     php-fpm:
         build:
@@ -30,7 +30,7 @@ services:
         entrypoint: /entrypoint.sh
         labels:
             - traefik.enable=true
-            - traefik.frontend.rule=Host:php.${PROJECT_NAME}.local
+            - traefik.frontend.rule=Host:php.${PROJECT_NAME}
 
     nginx:
         build:
@@ -51,7 +51,7 @@ services:
             - data-volume:/var/log/nginx
         labels:
             - traefik.enable=true
-            - traefik.frontend.rule=Host:www.event.local
+            - traefik.frontend.rule=HostRegexp:{domain:[A-Za-z0-9-.]+}.local
 
     node:
         build:
@@ -69,7 +69,7 @@ services:
         entrypoint: /entrypoint.sh
         labels:
             - traefik.enable=true
-            - traefik.frontend.rule=Host:node.${PROJECT_NAME}.local
+            - traefik.frontend.rule=Host:node.${PROJECT_NAME}
 
     db:
         image: mysql:8.0.13
@@ -86,7 +86,7 @@ services:
             - data-volume:/var/lib/mysql
         labels:
             - traefik.enable=true
-            - traefik.frontend.rule=Host:db.${PROJECT_NAME}.local
+            - traefik.frontend.rule=Host:db.${PROJECT_NAME}
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7
@@ -95,7 +95,7 @@ services:
             - 80
         labels:
             - traefik.enable=true
-            - traefik.frontend.rule=Host:phpmyadmin.${PROJECT_NAME}.local
+            - traefik.frontend.rule=Host:phpmyadmin.${PROJECT_NAME}
 
     portainer:
         image: portainer/portainer
@@ -108,7 +108,7 @@ services:
             - portainer_data:/data
         labels:
             - traefik.enable=true
-            - traefik.frontend.rule=Host:portainer.${PROJECT_NAME}.local
+            - traefik.frontend.rule=Host:portainer.${PROJECT_NAME}
 
 volumes:
     data-volume: {}
