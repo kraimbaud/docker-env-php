@@ -17,6 +17,9 @@ up:
 start:
 	cd docker; docker-compose start
 
+stop:
+	cd docker; docker-compose stop
+
 php:
 	docker exec -ti $(php-container)-$(PROJECT_NAME) zsh
 
