@@ -105,11 +105,9 @@ services:
             - 9000
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
-            - portainer_data:/data
         labels:
             - traefik.enable=true
             - traefik.frontend.rule=Host:portainer.${PROJECT_NAME}
 
 volumes:
     data-volume: {}
-    portainer_data: {}
