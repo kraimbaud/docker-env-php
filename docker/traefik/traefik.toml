@@ -1,6 +1,19 @@
 ################################################################
 # Docker Provider
 ################################################################
+logLevel = "DEBUG"
+
+defaultEntryPoints = ["http", "https"]
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+      CertFile = "/ssl-certs/traefik-selfsigned.crt"
+      KeyFile = "/ssl-certs/traefik-selfsigned.key"
+
 # Enable Docker Provider.
 [docker]
 
