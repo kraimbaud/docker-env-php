@@ -11,7 +11,7 @@ docker/php/config
 !docker/php/config/.gitkeep
 
 docker/nginx/conf.d
-!docker/nginx/conf.d/.gitkeep
+!docker/nginx/conf.d/_index.conf
 
 #Certbot
 app/certbot.log
