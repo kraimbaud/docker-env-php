@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.4-fpm
 
 # Install Packages
 RUN apt-get update && apt-get install -y \
@@ -16,17 +16,18 @@ RUN apt-get update && apt-get install -y \
     httpie \
     sudo \
     librabbitmq-dev \
-    libssh-dev
+    libssh-dev \
+    libonig-dev \
+    libzip-dev
 
 RUN docker-php-ext-configure \
-    gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+    gd --with-freetype --with-jpeg
 
 RUN docker-php-ext-install \
     pdo \
     pdo_mysql \
     mysqli \
     zip \
-    mbstring \
     bcmath \
     intl \
     opcache \
