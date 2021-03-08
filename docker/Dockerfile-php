@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.0.3-fpm
 
 # Install Packages
 RUN apt-get update && apt-get install -y \
@@ -38,8 +38,6 @@ RUN docker-php-ext-install \
     exif \
     bcmath \
     sockets
-
-RUN pecl install amqp && docker-php-ext-enable amqp
 
 # Install APCu
 RUN pecl install apcu
