@@ -91,4 +91,3 @@ RUN git config --global push.default simple
 # Instal Oh my Zsh
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN sed -i -- 's/robbyrussell/wezm+/g' /root/.zshrc # Other awesome theme: random kafeitu sonicradish wezm+
-RUN sed -i -- 's/plugins=(/plugins=(symfony2/g' /root/.zshrc # Add symfony2 plugin
