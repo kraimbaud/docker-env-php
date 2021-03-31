@@ -16,12 +16,9 @@ Edit env variable in **docker/.env**
     GIT_EMAIL=my.email@domain.name
     GIT_NAME=My Name
 
-### Make some PHP
+### Make some code
 
     make php # Enter into the PHP docker container
-    
-### Make some Node
-
     make node # Enter into the Node docker container
 
 ### Config hosts file
