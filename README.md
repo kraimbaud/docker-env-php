@@ -27,6 +27,8 @@ Replace ${PROJECT_NAME} with your project name in your .env file
  
     127.0.0.1 index.local traefik.${PROJECT_NAME} php.${PROJECT_NAME} node.${PROJECT_NAME} db.${PROJECT_NAME} phpmyadmin.${PROJECT_NAME} portainer.${PROJECT_NAME}
 
+Browser http://index.local to check if php is working
+
 ### Configure Nginx `/docker/nginx/conf.d/`
 Copy `default.conf`
 
