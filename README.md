@@ -40,7 +40,7 @@ Restart nginx container after modification
 
 Browser the MySQL database with PhpMyAdmin:
 
-    http://localhost:8888
+    http://phpmyadmin.${PROJECT_NAME}
 
 Login: **root**, Password: **root**. (You can change this config in you `.env` file).
 
