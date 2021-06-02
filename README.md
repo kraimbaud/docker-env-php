@@ -30,9 +30,9 @@ Replace ${PROJECT_NAME} with your project name in your .env file
 Browser http://index.local to check if php is working
 
 ### Configure Nginx `/docker/nginx/conf.d/`
-Copy `default.conf`
+Copy `_index.conf`
 
-`cp default.conf your_project_name.conf`
+`cp _index.conf your_project_name.conf`
 
 Restart nginx container after modification
 
