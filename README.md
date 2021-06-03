@@ -23,9 +23,9 @@ Edit env variable in **docker/.env**
 
 ### Config hosts file
 
-Replace ${PROJECT_NAME} with your project name in your .env file
+Replace **local** with your project name in your .env file
  
-    127.0.0.1 index.local traefik.${PROJECT_NAME} php.${PROJECT_NAME} node.${PROJECT_NAME} db.${PROJECT_NAME} phpmyadmin.${PROJECT_NAME} portainer.${PROJECT_NAME}
+    127.0.0.1 index.local traefik.local php.local node.local db.local phpmyadmin.local portainer.local
 
 Browser http://index.local to check if php is working
 
@@ -40,7 +40,7 @@ Restart nginx container after modification
 
 Browser the MySQL database with PhpMyAdmin:
 
-    http://phpmyadmin.${PROJECT_NAME}
+    http://phpmyadmin.local
 
 Login: **root**, Password: **root**. (You can change this config in you `.env` file).
 
