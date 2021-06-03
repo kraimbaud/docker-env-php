@@ -38,9 +38,7 @@ Restart nginx container after modification
 
 #### PhpMyAdmin
 
-Browser the MySQL database with PhpMyAdmin:
-
-    http://phpmyadmin.local
+Browser the MySQL database with PhpMyAdmin: http://phpmyadmin.local
 
 Login: **root**, Password: **root**. (You can change this config in you `.env` file).
 
