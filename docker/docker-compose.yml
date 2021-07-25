@@ -111,6 +111,18 @@ services:
             - traefik.enable=true
             - traefik.frontend.rule=Host:rabbitmq.${PROJECT_NAME}
 
+    elasticsearch:
+        image: elasticsearch:7.13.4
+        container_name: elasticsearch-${PROJECT_NAME}
+        ports:
+            - 9200:9200
+            - 9300:9300
+        environment:
+            - discovery.type=single-node
+        labels:
+            - traefik.enable=true
+            - traefik.frontend.rule=Host:elasticsearch.${PROJECT_NAME}
+
     portainer:
         image: portainer/portainer
         container_name: portainer-${PROJECT_NAME}
