@@ -25,7 +25,7 @@ Edit env variable in **docker/.env**
 
 Replace **local** with your project name in your .env file
  
-    127.0.0.1 index.local traefik.local php.local node.local db.local phpmyadmin.local portainer.local
+    127.0.0.1 index.local traefik.local php.local node.local db.local phpmyadmin.local portainer.local rabbitmq.local
 
 Browser http://index.local to check if php is working
 

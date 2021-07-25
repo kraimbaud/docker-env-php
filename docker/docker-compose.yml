@@ -97,6 +97,20 @@ services:
             - traefik.enable=true
             - traefik.frontend.rule=Host:phpmyadmin.${PROJECT_NAME}
 
+    rabbitmq:
+        image: rabbitmq:3.8.19-management
+        container_name: rabbitmq-${PROJECT_NAME}
+        hostname: rabbitmq
+        ports:
+            - 5672:5672
+            - 15672:15672
+        environment:
+            - RABBITMQ_DEFAULT_USER=guest
+            - RABBITMQ_DEFAULT_PASS=guest
+        labels:
+            - traefik.enable=true
+            - traefik.frontend.rule=Host:rabbitmq.${PROJECT_NAME}
+
     portainer:
         image: portainer/portainer
         container_name: portainer-${PROJECT_NAME}
