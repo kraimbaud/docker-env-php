@@ -97,6 +97,11 @@ services:
             - traefik.enable=true
             - traefik.frontend.rule=Host:phpmyadmin.${PROJECT_NAME}
 
+    redis:
+        image: redis:5-alpine
+        ports:
+            - 6379:6379
+
     rabbitmq:
         image: rabbitmq:3.8.19-management
         container_name: rabbitmq-${PROJECT_NAME}
@@ -134,6 +139,5 @@ services:
         labels:
             - traefik.enable=true
             - traefik.frontend.rule=Host:portainer.${PROJECT_NAME}
-
 volumes:
     data-volume: {}
